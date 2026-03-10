@@ -1,6 +1,6 @@
 export default function Key() {
   return (
-    <section className="pt-20 pb-32 bg-primary-brand w-full">
+    <section className="pt-20 pb-32 bg-primary-brand w-full overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-16">

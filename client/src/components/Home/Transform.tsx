@@ -2,7 +2,7 @@
 
 export default function Transform() {
   return (
-    <section className="relative w-full bg-linear-to-b from-primary via-primary to-tertiary ">
+    <section className="relative w-full bg-linear-to-b from-primary via-primary to-tertiary overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto">
 
         {/* Main Content */}
@@ -116,7 +116,7 @@ export default function Transform() {
               Trusted by world's largest companies
               including...
             </p>
-            <div className="flex flex-wrap justify-center gap-15">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-15">
               <span>
                 <img
                   src="/HomeImg/br-1.svg"

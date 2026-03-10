@@ -15,7 +15,7 @@ export default function Tool() {
     <section className="relative w-full bg-primary-foreground  py-28 px-6 overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-[44px] font-bold leading-tight text-base-brand">
+        <h2 className="text-3xl md:text-[44px] font-bold leading-tight text-base-brand">
           All the AI tools you need, at <br />
           your Fingertips.
         </h2>

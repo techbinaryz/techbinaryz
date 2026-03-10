@@ -96,6 +96,7 @@
 }
 
 :root {
+  overflow-x: hidden;
   --Gradient-2: linear-gradient(97deg, #725cff 0%, #b5b1ff 140.21%);
   --border-soft: color-mix(in oklab, var(--color-white) 10%, transparent);
 
@@ -196,6 +197,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
 }

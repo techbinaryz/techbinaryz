@@ -7,7 +7,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-primary-brand  px-2">
+    <footer className="relative w-full bg-primary-brand  px-2 overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto">
         <span className="absolute top-0 left-1/2 -translate-x-1/2">
           <svg
