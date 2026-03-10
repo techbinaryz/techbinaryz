@@ -3,7 +3,7 @@ export const FeedbackData = [
     name: "Ralph Edwards",
     company: "Big Kahuna Burger Ltd",
     designation: "Senior Software Developer",
-    image: "/HomeImg/human4.webp",
+    image: "/HomeImg/human1.webp",
     testimonial:
       "I found TailAdmin perfect. The code is easy to use in my projects, some of which are already in production.",
   },
@@ -27,7 +27,7 @@ export const FeedbackData = [
     name: "Esther Howard",
     company: "Barone LLC.",
     designation: "Senior Software Developer",
-    image: "/HomeImg/human3.webp",
+    image: "/HomeImg/human1.webp",
     testimonial:
       "I found TailAdmin perfect. The code is easy to use in my projects, some of which are already in production.",
   },
@@ -35,7 +35,7 @@ export const FeedbackData = [
     name: "Darlene Robertson",
     company: "Abstergo Ltd.",
     designation: "Senior Software Developer",
-    image: "/HomeImg/human4.webp",
+    image: "/HomeImg/human2.webp",
     testimonial:
       "I found TailAdmin perfect. The code is easy to use in my projects, some of which are already in production.",
   },
