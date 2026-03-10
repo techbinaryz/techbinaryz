@@ -1,19 +1,18 @@
-import {
-  HeroSection,
-  FeaturesSection,
-  ClientSection,
-  StatsSection,
-  CTASection,
-} from "@/components/home";
+import Core from "@/components/Home/Core";
+import FAQ from "@/components/Home/FAQ";
+import Key from "@/components/Home/Key";
+import Tool from "@/components/Home/Tools";
+import Transform from "@/components/Home/Transform";
+
 
 function HomePage() {
   return (
     <>
-      <HeroSection />
-      <FeaturesSection />
-      <ClientSection />
-      <StatsSection />
-      <CTASection />
+      <Transform />
+      <Core />
+      <Tool />
+      <Key />
+      <FAQ />
     </>
   );
 }
