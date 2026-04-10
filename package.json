@@ -1,0 +1,23 @@
+{
+  "name": "techbinaryz",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "admin",
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build:admin": "npm run build --workspace=admin",
+    "build:client": "npm run build --workspace=client",
+    "build:server": "npm run build --workspace=server",
+    "start:admin": "npm run start --workspace=admin",
+    "start:client": "npm run start --workspace=client",
+    "start:server": "npm run start --workspace=server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techbinaryz/techbinaryz.git"
+  },
+  "license": "ISC"
+}

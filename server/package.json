@@ -1,5 +1,5 @@
 {
-  "name": "tech-binaryz-server",
+  "name": "server",
   "version": "1.0.0",
   "description": "Fastify server for Tech Binaryz",
   "main": "index.ts",
