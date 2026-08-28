@@ -1,7 +1,7 @@
 "use client";
 
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { features } from "@/data/Feature.data";
+import { PillarFeature } from "@/data/PillarFeature.data";
 
 export default function Pillars() {
   return (
@@ -18,7 +18,7 @@ export default function Pillars() {
         </p>
 
         <BentoGrid className="text-left w-full mx-auto max-w-5xl lg:grid-rows-3">
-          {features.map((feature, id) => (
+          {PillarFeature.map((feature, id) => (
             <BentoCard
               key={id}
               name={feature.title}

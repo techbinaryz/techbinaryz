@@ -4,54 +4,8 @@ import {
   Card,
   CardContent,
 } from "@/components/ui/card";
-import {
-  Pencil,
-  Lightbulb,
-  Bot,
-  Smile,
-  Crown,
-  Zap,
-} from "lucide-react";
+import { CoreFeature } from "@/data/CoreFeature.data";
 
-const features = [
-  {
-    icon: Pencil,
-    title: "Seamless Content Creation AI",
-    description:
-      "Let our AI-powered service simplify your content creation process. Start using AI today!",
-  },
-  {
-    icon: Lightbulb,
-    title:
-      "Your Ideas, Powered by Our Technology",
-    description:
-      "Discover how AI can transform your ideas into captivating content with our high-quality service.",
-  },
-  {
-    icon: Bot,
-    title: "Intelligent Writing by Powerful AI",
-    description:
-      "Effortlessly access AI-generated content for blogs, websites, and more with our convenient service.",
-  },
-  {
-    icon: Smile,
-    title: "AI Generation Made Life Easier",
-    description:
-      "Experience effortless content creation with our AI service. Write less, accomplish more.",
-  },
-  {
-    icon: Crown,
-    title: "Premium AI-Generated Content",
-    description:
-      "Get expertly crafted content in no time with our AI service. Where quality meets speed.",
-  },
-  {
-    icon: Zap,
-    title: "Super Fast AI Writing Companion",
-    description:
-      "Partner with AI to create content that connects with your audience. Give it a try now.",
-  },
-];
 
 export default function Core() {
   return (
@@ -71,8 +25,8 @@ export default function Core() {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          {CoreFeature.map((feature, index) => (
             <Card
               key={index}
               className="
@@ -81,9 +35,9 @@ export default function Core() {
     rounded-2xl
     shadow-[0px_40px_80px_-20px_rgba(107,110,148,0.12)]"
             >
-              <CardContent className="p-8 space-y-10">
+              <CardContent className="p-7 space-y-5">
                 {/* Icon Circle */}
-                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-linear-to-b from-tertiary to-primary border border-white">
+                <div className="w-14 h-14 flex items-center justify-center mx-auto rounded-full bg-linear-to-b from-tertiary to-primary border border-white">
                   <feature.icon
                     className="w-6 h-6 text-white"
                     fill="white"
@@ -96,7 +50,7 @@ export default function Core() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-base-foreground text-md leading-relaxed">
+                <p className="text-base-foreground text-md leading-relaxed line-clamp-3">
                   {feature.description}
                 </p>
               </CardContent>

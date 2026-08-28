@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion"
 import { partners } from "@/data/Partner.data";
 import Image from "next/image";
 
