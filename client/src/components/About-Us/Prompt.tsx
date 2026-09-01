@@ -1,3 +1,6 @@
+import { partners } from "@/data/Partner.data";
+import Image from "next/image";
+
 export default function Prompt() {
   return (
     <section className="py-25 flex flex-col w-full items-center justify-center text-center px-6 md:px-20 bg-linear-to-b from-primary via-primary to-tertiary">
@@ -47,70 +50,29 @@ export default function Prompt() {
             </span>
           </button>
         </div>
+
         {/* Company Logos */}
-        <div className="mt-16 text-gray-400ss">
+        <div className="mt-16">
+
           <p className="mb-6 text-center text-base-foreground text-lg font-medium">
             Trusted by world's largest companies
             including...
           </p>
-          <div className="flex flex-wrap justify-center gap-15">
-            <span>
-              <img
-                src="/HomeImg/br-1.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
-            <span>
-              <img
-                src="/HomeImg/br-2.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
-            <span>
-              <img
-                src="/HomeImg/br-3.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
-            <span>
-              <img
-                src="/HomeImg/br-4.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
-            <span>
-              <img
-                src="/HomeImg/br-5.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
-            <span>
-              <img
-                src="/HomeImg/br-6.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
-            <span>
-              <img
-                src="/HomeImg/br-7.svg"
-                width={80}
-                height={32}
-                className="opacity-70 hover:opacity-100 duration-300"
-              />
-            </span>
+
+
+          <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto  md:gap-15">
+            {partners.map((l) => (
+              <span className="relative w-15 h-15" key={l.alt}>
+                <Image
+                  src={l.src}
+                  alt={l.alt}
+                  fill
+                  className="opacity-70 hover:opacity-100 duration-300 object-contain"
+                />
+              </span>
+            ))}
           </div>
+
         </div>
       </div>
 
