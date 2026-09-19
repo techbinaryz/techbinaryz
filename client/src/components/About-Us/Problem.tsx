@@ -1,12 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import SwitchCheck from "./General/SwitchCheck";
 
 export default function Problem() {
-  const [isDark, setIsDark] = useState(true);
-
   return (
     <section className="py-32 px-6 w-full md:px-20 border-t bg-primary-brand">
       <div className="2xl:max-w-7xl mx-auto flex gap-5 justify-between">
@@ -40,24 +36,11 @@ export default function Problem() {
 
         {/* Visible to Only Large Screen  */}
         <div className="hidden lg:flex flex-col items-end w-full gap-5">
-          <SwitchCheck
-            isDark={isDark}
-            setIsDark={setIsDark}
-          />
-
           <div
-            className={`relative mx-auto max-w-5xl rounded-3xl p-4 backdrop-blur-xl transition-all duration-300
-          ${isDark
-                ? "border border-white/10 bg-white/5 shadow-2xl"
-                : "border border-gray-300 bg-white/50 shadow-lg"
-              }`}
+            className="relative mx-auto max-w-5xl rounded-3xl p-4 backdrop-blur-xl transition-all duration-300 border border-gray-300 bg-white/50 shadow-lg"
           >
             <Image
-              src={
-                isDark
-                  ? "/HomeImg/ft1.webp"
-                  : "/HomeImg/tab-image-2-dark.webp"
-              }
+              src="/HomeImg/tab-image-2-dark.webp"
               alt="AI Dashboard Preview"
               width={1200}
               height={700}

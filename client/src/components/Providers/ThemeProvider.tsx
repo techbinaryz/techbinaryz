@@ -8,13 +8,13 @@ import {
     ReactNode,
 } from "react";
 
-type Theme = "dark" | "light" | "system";
+
+type Theme = "dark" | "light" ;
 
 interface ThemeContextType {
     theme: Theme;
     setDark: () => void;
     setLight: () => void;
-    setSystem: () => void;
     systemTheme: "dark" | "light";
 }
 
@@ -27,79 +27,18 @@ export function ThemeProvider({
 }: {
     children: ReactNode;
 }) {
-    const [theme, setTheme] = useState<Theme>("system");
-    const [systemTheme, setSystemTheme] =
-        useState<"dark" | "light">("dark");
+    const [theme] = useState<Theme>("light");
+    const [systemTheme] = useState<"dark" | "light">("light");
 
-    // detect system theme
+    // Always force light mode
     useEffect(() => {
-        const media = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-        );
-
-        const updateSystemTheme = () => {
-            setSystemTheme(media.matches ? "dark" : "light");
-        };
-
-        updateSystemTheme();
-
-        media.addEventListener("change", updateSystemTheme);
-
-        return () =>
-            media.removeEventListener(
-                "change",
-                updateSystemTheme
-            );
+        document.documentElement.classList.remove("dark", "system");
+        document.documentElement.classList.add("light");
+        localStorage.setItem("theme", "light");
     }, []);
 
-    // load saved theme
-    useEffect(() => {
-        const savedTheme = localStorage.getItem(
-            "theme"
-        ) as Theme | null;
-
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else {
-            applyTheme("system");
-        }
-    }, []);
-
-    const applyTheme = (newTheme: Theme) => {
-        setTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-
-        document.documentElement.classList.remove(
-            "light",
-            "dark"
-        );
-
-        if (newTheme === "system") {
-            const current = window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches
-                ? "dark"
-                : "light";
-
-            document.documentElement.classList.add(current);
-        } else {
-            document.documentElement.classList.add(newTheme);
-        }
-    };
-
-    useEffect(() => {
-        if (theme === "system") {
-            document.documentElement.classList.remove(
-                "light",
-                "dark"
-            );
-            document.documentElement.classList.add(systemTheme);
-        }
-    }, [systemTheme, theme]);
-
-    const setDark = () => applyTheme("dark");
-    const setLight = () => applyTheme("light");
-    const setSystem = () => applyTheme("system");
+    const setDark = () => {};
+    const setLight = () => {};
 
     return (
         <ThemeContext.Provider
@@ -107,7 +46,6 @@ export function ThemeProvider({
                 theme,
                 setDark,
                 setLight,
-                setSystem,
                 systemTheme,
             }}
         >
