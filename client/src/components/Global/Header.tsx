@@ -73,11 +73,11 @@ export default function Header() {
               </div>
 
               {/* Sign In inside drawer for mobile */}
-              <div className="px-4 pb-6 mt-auto">
+              <div className="px-4 pb-8 mt-auto">
                 <Link
                   href="/sign-in"
                   onClick={() => setOpen(false)}
-                  className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer"
+                  className="block w-full text-center bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-3 rounded-full text-sm font-medium cursor-pointer transition"
                 >
                   Sign In
                 </Link>

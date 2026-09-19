@@ -31,6 +31,7 @@ export default function Core() {
               key={index}
               className="
     bg-white/5
+    border-0
     transition-all duration-30
     rounded-2xl
     shadow-[0px_40px_80px_-20px_rgba(107,110,148,0.12)]"

@@ -4,7 +4,6 @@ import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
 import Header from "@/components/Global/Header";
 import Footer from "@/components/Global/Footer";
-import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import { Toaster } from "sonner";
 
 
@@ -46,16 +45,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="light">
       <body className={`${geist.className} antialiased`}>
-        <ThemeProvider>
           <Header />
           <main className="pt-16 md:pt-20">
             {children}
           </main>
           <Footer />
           <Toaster position="top-right" richColors />
-        </ThemeProvider>
       </body>
     </html>
   );

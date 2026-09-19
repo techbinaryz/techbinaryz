@@ -139,12 +139,11 @@ export default function SignInForm() {
           </div>
 
           {/* Submit */}
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              disabled={loading}
-              className="px-6 py-2 rounded-full bg-teal-400 hover:bg-teal-500 text-white text-sm font-medium transition cursor-pointer flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-            >
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+          >
               {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -157,7 +156,6 @@ export default function SignInForm() {
                 </>
               )}
             </button>
-          </div>
 
         </form>
       </div>
