@@ -27,10 +27,10 @@ export default function Prompt() {
           <button className="flex items-center gap-3 cursor-pointer rounded-full  px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition">
             <span
               className="size-8 rounded-full inline-flex items-center justify-center"
-            // style={{
-            //   background:
-            //     "var(--Gradient-2, linear-gradient(97deg,#725cff 0%,#b5b1ff 140.21%))",
-            // }}
+            style={{
+              background:
+                "var(--Gradient-2, linear-gradient(97deg,#725cff 0%,#b5b1ff 140.21%))",
+            }}
             >
               <svg
                 width="14"

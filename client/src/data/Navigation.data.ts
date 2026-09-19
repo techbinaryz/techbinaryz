@@ -1,3 +1,5 @@
+import { Home, LayoutGrid, Users, Mail, type LucideIcon } from "lucide-react";
+
 type subOpTypes = {
   subImgUrl?: string;
   subText: string;
@@ -6,6 +8,7 @@ type subOpTypes = {
 
 type navDataTypes = {
   navOp: string;
+  icon: LucideIcon;
   subOp?: subOpTypes[];
   link?: string;
 };
@@ -13,10 +16,12 @@ type navDataTypes = {
 export const navData: navDataTypes[] = [
   {
     navOp: "Home",
+    icon: Home,
     link: "/",
   },
   {
     navOp: "Products",
+    icon: LayoutGrid,
     link: "/products",
     subOp: [
       {
@@ -43,10 +48,12 @@ export const navData: navDataTypes[] = [
   },
   {
     navOp: "About Us",
+    icon: Users,
     link: "/about-us",
   },
   {
     navOp: "Contact Us",
+    icon: Mail,
     link: "/contact-us",
   },
 ];

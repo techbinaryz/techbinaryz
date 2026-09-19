@@ -1,33 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import Navigation from "@/common/Navigation";
+import { Menu } from "lucide-react";
 import {
-  Computer,
-  Moon,
-  Sun,
-  Menu,
-  X,
-} from "lucide-react";
-import { useTheme } from "@/components/Providers/ThemeProvider";
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme } = useTheme();
-
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <header className="w-full bg-primary sticky top-0 z-50 overflow-hidden">
-      <div className="2xl:max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
-        {/* Logo Section */}
-        <div className="flex items-center shrink-0">
+      <div className="max-w-6xl w-full mx-auto sm:px-6 h-16 md:h-20 flex items-center justify-between">
+        {/* Logo — clicks to home */}
+        <div className="-ml-2 flex items-center shrink-0 cursor-pointer" onClick={() => router.push('/')}>
           <Image
-            src="/Tech Binary.png"
+            src="/TechBinary.png"
             alt="TechBinaryz Logo"
             width={200}
             height={200}
-            className="object-cover w-36 h-9 md:w-52 md:h-14"
+            className="object-contain w-28 h-7 md:w-40 md:h-10"
           />
         </div>
 
@@ -38,32 +39,53 @@ export default function Header() {
 
         {/* Right Section */}
         <div className="flex items-center gap-2 md:gap-4">
-
-          {/* Action Buttons */}
-          <button className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer">
+          {/* Sign In Button */}
+          <button
+            onClick={() => router.push("/sign-in")}
+            className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer"
+          >
             Sign In
           </button>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="lg:hidden text-base-foreground p-2"
-            onClick={() =>
-              setIsMenuOpen(!isMenuOpen)
-            }
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          {/* Mobile Hamburger — triggers Drawer */}
+          <Drawer open={open} onOpenChange={setOpen} swipeDirection="left">
+            <DrawerTrigger className="lg:hidden text-base-foreground p-2" aria-label="Open menu">
+              <Menu />
+            </DrawerTrigger>
+
+            <DrawerContent className="bg-primary ">
+              <DrawerHeader className="px-6 py-3">
+                <DrawerTitle>
+                  <Link href="/" onClick={() => setOpen(false)}>
+                    <Image
+                      src="/TechBinary.png"
+                      alt="TechBinaryz Logo"
+                      width={160}
+                      height={40}
+                      className="object-contain w-32 h-8"
+                    />
+                  </Link>
+                </DrawerTitle>
+              </DrawerHeader>
+
+              <div className="px-4 py-6">
+                <Navigation vertical onNavigate={() => setOpen(false)} />
+              </div>
+
+              {/* Sign In inside drawer for mobile */}
+              <div className="px-4 pb-6 mt-auto">
+                <Link
+                  href="/sign-in"
+                  onClick={() => setOpen(false)}
+                  className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer"
+                >
+                  Sign In
+                </Link>
+              </div>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
-
-      {/* Mobile Navigation Dropdown */}
-      {
-        isMenuOpen && (
-          <div className="lg:hidden bg-primary border-b border-gray-800 px-6 py-4 flex flex-col gap-4">
-            <Navigation />
-          </div>
-        )
-      }
-    </header>
+    </header >
   );
 }
