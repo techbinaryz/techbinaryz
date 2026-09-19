@@ -5,7 +5,7 @@ import {
   Terminal,
 } from "lucide-react";
 
-export const features = [
+export const PillarFeature = [
   {
     title: "Performance First",
     description:

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Onest } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
 import Header from "@/common/Header";
@@ -7,7 +7,7 @@ import Footer from "@/common/Footer";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 
 
-const onest = Onest({
+const geist = Geist({
   subsets: ["latin"],
   display: "swap",
 });
@@ -46,7 +46,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${onest.className} antialiased`}>
+      <body className={`${geist.className} antialiased`}>
         <ThemeProvider>
           <Header />
           {children}

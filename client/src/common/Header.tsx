@@ -20,7 +20,7 @@ export default function Header() {
 
 
   return (
-    <header className="w-full bg-primary sticky top-0 z-50 border-b border-gray-800 overflow-hidden">
+    <header className="w-full bg-primary sticky top-0 z-50 overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center shrink-0">
