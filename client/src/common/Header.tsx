@@ -20,8 +20,8 @@ export default function Header() {
 
   return (
     <header className="w-full bg-primary sticky top-0 z-50 overflow-hidden">
-      <div className="max-w-6xl w-full mx-auto sm:px-6 h-16 md:h-20 flex items-center justify-between">
-        {/* Logo — clicks to home */}
+      <div className="max-w-6xl w-full mx-auto sm:px-6 h-16 sm:h-16 md:h-20 flex items-center justify-between">
+        {/* Logo */}
         <div className="-ml-2 flex items-center shrink-0 cursor-pointer" onClick={() => router.push('/')}>
           <Image
             src="/TechBinary.png"
@@ -42,7 +42,7 @@ export default function Header() {
           {/* Sign In Button */}
           <button
             onClick={() => router.push("/sign-in")}
-            className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer"
+            className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-secondary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer"
           >
             Sign In
           </button>
@@ -62,13 +62,13 @@ export default function Header() {
                       alt="TechBinaryz Logo"
                       width={160}
                       height={40}
-                      className="object-contain w-32 h-8"
+                      className="object-contain w-32 h-8 my-3"
                     />
                   </Link>
                 </DrawerTitle>
               </DrawerHeader>
 
-              <div className="px-4 py-6">
+              <div className="px-4">
                 <Navigation vertical onNavigate={() => setOpen(false)} />
               </div>
 

@@ -5,6 +5,7 @@ import { siteConfig, routeMetadata } from "@/config/site";
 import Header from "@/common/Header";
 import Footer from "@/common/Footer";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
+import { Toaster } from "sonner";
 
 
 const geist = Geist({
@@ -51,6 +52,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Toaster position="top-right" richColors />
         </ThemeProvider>
       </body>
     </html>
