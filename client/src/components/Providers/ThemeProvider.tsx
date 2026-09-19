@@ -9,13 +9,11 @@ import {
 } from "react";
 
 
-type Theme = "dark" | "light" ;
+type Theme = "light" ;
 
 interface ThemeContextType {
     theme: Theme;
-    setDark: () => void;
     setLight: () => void;
-    systemTheme: "dark" | "light";
 }
 
 const ThemeContext = createContext<
@@ -32,21 +30,17 @@ export function ThemeProvider({
 
     // Always force light mode
     useEffect(() => {
-        document.documentElement.classList.remove("dark", "system");
         document.documentElement.classList.add("light");
         localStorage.setItem("theme", "light");
     }, []);
 
-    const setDark = () => {};
     const setLight = () => {};
 
     return (
         <ThemeContext.Provider
             value={{
                 theme,
-                setDark,
                 setLight,
-                systemTheme,
             }}
         >
             {children}

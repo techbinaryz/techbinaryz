@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   FaDiscord,
   FaGithub,
@@ -7,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-primary-brand  px-2 overflow-hidden">
+    <footer className="relative w-full bg-linear-to-b lg:bg-linear-to-r from-primary-brand   px-2 overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto">
         <span className="absolute top-0 left-1/2 -translate-x-1/2">
           <svg
@@ -21,8 +22,8 @@ export default function Footer() {
               <circle
                 cx="630"
                 cy="-173.299"
-                r="230"
-                fill="#3B2EFF"
+                r="360"
+                fill="#3dccc7"
               />
             </g>
             <defs>
@@ -43,10 +44,10 @@ export default function Footer() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
           <div className="grid gap-y-12 gap-x-8 lg:grid-cols-12">
             {/* Brand */}
-            <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-6">
               <div className="flex items-center gap-2">
                 <img
-                  src="/HomeImg/InBoxLogo.svg"
+                  src="/TechBinary.png"
                   width={128}
                   height={32}
                 />
@@ -82,23 +83,23 @@ export default function Footer() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 {/* Services */}
                 <div>
-                  <h3 className="mb-6 text-sm text-slate-500 ">
+                  <h3 className="mb-6 text-sm text-white font-bold">
                     Services
                   </h3>
-                  <ul className="space-y-3 text-sm text-slate-500 ">
-                    <li className="hover:text-white cursor-pointer">
+                  <ul className="space-y-3 text-sm text-white ">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Status
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Pricing
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       FAQ
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Help Docs
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Privacy Policy
                     </li>
                   </ul>
@@ -106,23 +107,23 @@ export default function Footer() {
 
                 {/* Features */}
                 <div>
-                  <h3 className="mb-6 text-sm text-slate-500 ">
+                  <h3 className="mb-6 text-sm text-white font-bold">
                     Features
                   </h3>
-                  <ul className="space-y-3 text-sm text-slate-500 ">
-                    <li className="hover:text-white cursor-pointer">
+                  <ul className="space-y-3 text-sm text-white ">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       HTML File Upload
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       HTML Website Hosting
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Free Image Hosting
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Upload PDF Online
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Free Zip File Hosting
                     </li>
                   </ul>
@@ -130,20 +131,20 @@ export default function Footer() {
 
                 {/* Account */}
                 <div>
-                  <h3 className="mb-6 text-sm text-slate-500 ">
+                  <h3 className="mb-6 text-sm text-white font-bold">
                     Account
                   </h3>
-                  <ul className="space-y-3 text-sm text-slate-500">
-                    <li className="hover:text-white cursor-pointer">
+                  <ul className="space-y-3 text-sm text-white">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Login
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Sign Up
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Reset Password
                     </li>
-                    <li className="hover:text-white cursor-pointer">
+                    <li className="hover:text-white duration-200 cursor-pointer">
                       Support
                     </li>
                   </ul>
@@ -153,10 +154,10 @@ export default function Footer() {
 
             {/* Subscribe */}
             <div className="lg:col-span-3 lg:pl-6">
-              <h3 className="mb-6 text-sm text-slate-500 ">
+              <h3 className="mb-6 text-sm text-white font-bold">
                 Stay In Touch
               </h3>
-              <p className="text-sm text-slate-500  mb-5">
+              <p className="text-sm text-white  mb-5">
                 Subscribe now for exclusive insights
                 and offers!
               </p>
@@ -167,7 +168,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   className="h-12 px-4 rounded-full bg-transparent border border-gray-700 text-sm text-slate-500 text-center focus:outline-none focus:border-purple-500"
                 />
-                <button className="h-12 cursor-pointer rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white text-sm font-medium transition">
+                <button className="h-12 cursor-pointer rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-secondary text-white text-sm font-medium transition">
                   Subscribe Now
                 </button>
               </div>
@@ -177,7 +178,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 py-5 text-center text-sm text-gray-500">
+          <div className="max-w-7xl mx-auto px-8 py-5 text-center text-sm text-gray-500">
             © 2026 AIStarterKit - All Rights
             Reserved.
           </div>

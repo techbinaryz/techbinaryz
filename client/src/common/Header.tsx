@@ -13,10 +13,8 @@ import {
 import { useTheme } from "@/components/Providers/ThemeProvider";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] =
-    useState(false);
-  const { theme } =
-    useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
 
   return (
