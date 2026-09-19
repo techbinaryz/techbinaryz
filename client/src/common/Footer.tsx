@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 import {
   FaDiscord,
   FaGithub,
@@ -86,21 +86,21 @@ export default function Footer() {
                   <h3 className="mb-6 text-sm text-white font-bold">
                     Services
                   </h3>
-                  <ul className="space-y-3 text-sm text-white ">
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Status
+                  <ul className="space-y-3 text-sm text-white">
+                    <li>
+                      <Link href="/about-us" className="hover:text-gray-300 duration-200">Status</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Pricing
+                    <li>
+                      <Link href="/about-us" className="hover:text-gray-300 duration-200">Pricing</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      FAQ
+                    <li>
+                      <Link href="/about-us" className="hover:text-gray-300 duration-200">FAQ</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Help Docs
+                    <li>
+                      <Link href="/about-us" className="hover:text-gray-300 duration-200">Help Docs</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Privacy Policy
+                    <li>
+                      <Link href="/about-us" className="hover:text-gray-300 duration-200">Privacy Policy</Link>
                     </li>
                   </ul>
                 </div>
@@ -110,21 +110,21 @@ export default function Footer() {
                   <h3 className="mb-6 text-sm text-white font-bold">
                     Features
                   </h3>
-                  <ul className="space-y-3 text-sm text-white ">
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      HTML File Upload
+                  <ul className="space-y-3 text-sm text-white">
+                    <li>
+                      <Link href="/products" className="hover:text-gray-300 duration-200">HTML File Upload</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      HTML Website Hosting
+                    <li>
+                      <Link href="/products" className="hover:text-gray-300 duration-200">HTML Website Hosting</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Free Image Hosting
+                    <li>
+                      <Link href="/products" className="hover:text-gray-300 duration-200">Free Image Hosting</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Upload PDF Online
+                    <li>
+                      <Link href="/products" className="hover:text-gray-300 duration-200">Upload PDF Online</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Free Zip File Hosting
+                    <li>
+                      <Link href="/products" className="hover:text-gray-300 duration-200">Free Zip File Hosting</Link>
                     </li>
                   </ul>
                 </div>
@@ -135,17 +135,17 @@ export default function Footer() {
                     Account
                   </h3>
                   <ul className="space-y-3 text-sm text-white">
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Login
+                    <li>
+                      <Link href="/sign-in" className="hover:text-gray-300 duration-200">Login</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Sign Up
+                    <li>
+                      <Link href="/sign-in" className="hover:text-gray-300 duration-200">Sign Up</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Reset Password
+                    <li>
+                      <Link href="/sign-in" className="hover:text-gray-300 duration-200">Reset Password</Link>
                     </li>
-                    <li className="hover:text-white duration-200 cursor-pointer">
-                      Support
+                    <li>
+                      <Link href="/contact-us" className="hover:text-gray-300 duration-200">Support</Link>
                     </li>
                   </ul>
                 </div>
