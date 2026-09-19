@@ -19,10 +19,10 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <header className="w-full bg-primary sticky top-0 z-50 overflow-hidden">
-      <div className="max-w-6xl w-full mx-auto sm:px-6 h-16 sm:h-16 md:h-20 flex items-center justify-between">
+    <header className="w-full bg-primary fixed top-0 z-50">
+      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="-ml-2 flex items-center shrink-0 cursor-pointer" onClick={() => router.push('/')}>
+        <div className="flex items-center shrink-0 cursor-pointer" onClick={() => router.push('/')}>
           <Image
             src="/TechBinary.png"
             alt="TechBinaryz Logo"

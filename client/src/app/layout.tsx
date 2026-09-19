@@ -50,7 +50,9 @@ export default function RootLayout({
       <body className={`${geist.className} antialiased`}>
         <ThemeProvider>
           <Header />
-          {children}
+          <main className="pt-16 md:pt-20">
+            {children}
+          </main>
           <Footer />
           <Toaster position="top-right" richColors />
         </ThemeProvider>
