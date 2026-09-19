@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
-import Header from "@/common/Header";
-import Footer from "@/common/Footer";
+import Header from "@/components/Global/Header";
+import Footer from "@/components/Global/Footer";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import { Toaster } from "sonner";
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Navigation from "@/common/Navigation";
+import Navigation from "@/components/Global/Navigation";
 import { Menu } from "lucide-react";
 import {
   Drawer,

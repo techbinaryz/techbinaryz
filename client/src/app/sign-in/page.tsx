@@ -1,6 +1,9 @@
+import Signin from "@/components/Global/Signin";
 
 export default function page() {
   return (
-    <div>Hello</div>
+    <div>
+      <Signin />
+    </div>
   )
 }
