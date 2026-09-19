@@ -8,38 +8,12 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-linear-to-b lg:bg-linear-to-r from-primary-brand   px-2 overflow-hidden">
+    <footer className="relative w-full px-2 overflow-hidden bg-primary-brand">
+      {/* Mobile: top-to-bottom glow in the middle vertically */}
+      <div className="absolute inset-0 md:hidden" style={{background: "radial-gradient(ellipse 80% 25% at 50% 50%, #006d77 0%, #0f172a 100%)"}} />
+      {/* md+: left-to-right glow anchored at top center */}
+      <div className="absolute inset-0 hidden md:block" style={{background: "radial-gradient(ellipse 40% 30% at 50% 15%, #006d77 0%, #0f172a 100%)"}} />
       <div className="2xl:max-w-7xl mx-auto">
-        <span className="absolute top-0 left-1/2 -translate-x-1/2">
-          <svg
-            width="1260"
-            height="457"
-            viewBox="0 0 1260 457"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g filter="url(#blur)">
-              <circle
-                cx="630"
-                cy="-173.299"
-                r="360"
-                fill="#3dccc7"
-              />
-            </g>
-            <defs>
-              <filter
-                id="blur"
-                x="0"
-                y="-803.299"
-                width="1260"
-                height="1260"
-                filterUnits="userSpaceOnUse"
-              >
-                <feGaussianBlur stdDeviation="200" />
-              </filter>
-            </defs>
-          </svg>
-        </span>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
           <div className="grid gap-y-12 gap-x-8 lg:grid-cols-12">
