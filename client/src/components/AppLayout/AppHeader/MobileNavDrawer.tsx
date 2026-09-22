@@ -58,24 +58,30 @@ export function MobileNavDrawer({ onClose }: MobileNavDrawerProps) {
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <NavigationMenu className="w-full max-w-full flex-col items-start">
           <NavigationMenuList className="w-full flex-col items-start gap-1">
-            {navData.map((item) => (
-              <NavigationMenuItem key={item.navOp} className="w-full">
-                <Link href={item.link || "#"} legacyBehavior passHref>
+            {navData.map(({ navOp, link, icon: Icon }) => {
+              const isActive = pathName === link;
+
+              return (
+                <NavigationMenuItem key={navOp} className="w-full">
                   <NavigationMenuLink
+                    aria-current={isActive ? "page" : undefined}
                     onClick={onClose}
+                    render={<Link href={link ?? "#"} />}
                     className={cn(
-                      "flex w-full cursor-pointer items-center justify-start gap-3 rounded-full px-4 py-3 text-sm font-medium transition-colors hover:text-[#725cff]",
-                      pathName === item.link
-                        ? "bg-muted-sub text-muted-rev"
-                        : "hover:bg-muted-brand/50 text-slate-400",
+                      "flex w-full items-center justify-start gap-3 rounded-full px-4 py-3 text-sm font-medium transition-colors",
+                      // The shadcn base sets hover/focus backgrounds; override them
+                      // so the active row keeps its colour after being tapped.
+                      isActive
+                        ? "bg-secondary-brand text-white hover:bg-secondary-brand focus:bg-secondary-brand"
+                        : "text-slate-400 hover:bg-muted-brand/50 hover:text-black focus:bg-muted-brand/50 focus:text-black",
                     )}
                   >
-                    {item.icon && <item.icon size={18} />}
-                    {item.navOp}
+                    {Icon && <Icon size={18} />}
+                    {navOp}
                   </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
+                </NavigationMenuItem>
+              );
+            })}
           </NavigationMenuList>
         </NavigationMenu>
       </div>

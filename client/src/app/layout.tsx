@@ -4,7 +4,6 @@ import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
 import AppLayoutProvider from "@/components/AppLayout/AppLayoutProvider/AppLayoutProvider";
 
-
 const geist = Geist({
   subsets: ["latin"],
   display: "swap",
@@ -16,7 +15,13 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: ["TechBinaryz", "AI starter kit", "AI development", "tech solutions", "machine learning"],
+  keywords: [
+    "TechBinaryz",
+    "AI starter kit",
+    "AI development",
+    "tech solutions",
+    "machine learning",
+  ],
   authors: [{ name: siteConfig.creator, url: siteConfig.url }],
   creator: siteConfig.creator,
   metadataBase: new URL(siteConfig.url),
@@ -44,10 +49,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="light">
-      <body className={`${geist.className} antialiased`}>
-        <AppLayoutProvider>
-          {children}
-        </AppLayoutProvider>
+      <body className={`${geist.className} bg-white antialiased`}>
+        <AppLayoutProvider>{children}</AppLayoutProvider>
       </body>
     </html>
   );
