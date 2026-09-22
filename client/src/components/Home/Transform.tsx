@@ -1,10 +1,11 @@
 "use client";
 
 import { partners } from "@/data/Partner.data";
+import { transformData } from "@/data/Content-Change/Home.data";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Transform() {
-
   return (
     <section className="relative w-full bg-linear-to-b from-primary via-primary to-tertiary overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto">
@@ -12,7 +13,7 @@ export default function Transform() {
         {/* Main Content */}
         <div className="mx-auto max-w-6xl px-6 pt-18 pb-16 text-center">
           <div className="mb-6 max-w-fit mx-auto rounded-full border border-base-foreground p-px">
-            <div className="flex items-center gap-2 rounded-full bg-transparent px-5 py-2 text-sm  ">
+            <div className="flex items-center gap-2 rounded-full bg-transparent px-5 py-2 text-sm">
               <svg
                 width="22"
                 height="22"
@@ -33,61 +34,39 @@ export default function Transform() {
                   fill="url(#paint1)"
                 />
                 <defs>
-                  <linearGradient
-                    id="paint0"
-                    x1="7"
-                    y1="0"
-                    x2="21"
-                    y2="15"
-                  >
+                  <linearGradient id="paint0" x1="7" y1="0" x2="21" y2="15">
                     <stop stopColor="#FF58D5" />
-                    <stop
-                      offset="1"
-                      stopColor="#FFA0E7"
-                    />
+                    <stop offset="1" stopColor="#FFA0E7" />
                   </linearGradient>
-                  <linearGradient
-                    id="paint1"
-                    x1="9"
-                    y1="11"
-                    x2="0"
-                    y2="21"
-                  >
+                  <linearGradient id="paint1" x1="9" y1="11" x2="0" y2="21">
                     <stop stopColor="#7A5AF8" />
-                    <stop
-                      offset="1"
-                      stopColor="#B5A2FF"
-                    />
+                    <stop offset="1" stopColor="#B5A2FF" />
                   </linearGradient>
                 </defs>
               </svg>
 
-              <p className="text-base-foreground">
-                Most Powerful AI Tools in One Place
-              </p>
+              <p className="text-base-foreground">{transformData.badge}</p>
             </div>
           </div>
 
           <h1 className="text-[35px] md:text-[40px] lg:text-[50px] max-w-3xl mx-auto font-bold text-base-brand leading-[1.2] md:leading-tight">
-            Transform Ideas into Reality with
-            Intelligent AI Tools
+            {transformData.heading}
           </h1>
 
           <p className="mt-5 text-base-foreground max-w-2xl mx-auto text-md">
-            Unleash the Power of Artificial
-            Intelligence to Streamline Your
-            Workflow, Boost Productivity, and
-            Redefine Success.
+            {transformData.subheading}
           </p>
 
           {/* Buttons */}
           <div className="mt-8 flex flex-col lg:flex-row md:flex-row justify-center items-center gap-4">
-            <button className="rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary cursor-pointer px-6 py-3.5 text-sm font-medium text-white transition">
-              Explore Apps
-            </button>
+            <Link
+              href={transformData.primaryAction.href}
+              className="rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand cursor-pointer px-6 py-3.5 text-sm font-medium text-white transition"
+            >
+              {transformData.primaryAction.label}
+            </Link>
 
-            {/* Watch Intro Video */}
-            <button className="flex items-center gap-3 cursor-pointer rounded-full  px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition">
+            <button className="flex items-center gap-3 cursor-pointer rounded-full px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition">
               <span
                 className="size-8 rounded-full inline-flex items-center justify-center"
                 style={{
@@ -109,21 +88,18 @@ export default function Transform() {
                 </svg>
               </span>
               <span className="text-base-foreground">
-                Watch Intro Video
+                {transformData.secondaryAction.label}
               </span>
             </button>
           </div>
 
           {/* Company Logos */}
           <div className="mt-16">
-
             <p className="mb-6 text-center text-base-foreground text-lg font-medium">
-              Trusted by world's largest companies
-              including...
+              {transformData.trustedLabel}
             </p>
 
-
-            <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto  md:gap-15">
+            <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto md:gap-15">
               {partners.map((l) => (
                 <span className="relative w-15 h-15" key={l.alt}>
                   <Image
@@ -135,13 +111,9 @@ export default function Transform() {
                 </span>
               ))}
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

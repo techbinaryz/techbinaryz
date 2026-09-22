@@ -42,7 +42,7 @@ export default function Header() {
           {/* Sign In Button */}
           <button
             onClick={() => router.push("/sign-in")}
-            className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-secondary text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer"
+            className="hidden lg:w-26 md:w-26 lg:block bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white px-4 py-2 md:px-5 md:py-3 rounded-full text-xs md:text-sm font-medium cursor-pointer transition"
           >
             Sign In
           </button>
@@ -77,7 +77,7 @@ export default function Header() {
                 <Link
                   href="/sign-in"
                   onClick={() => setOpen(false)}
-                  className="block w-full text-center bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white px-4 py-3 rounded-full text-sm font-medium cursor-pointer transition"
+                  className="block w-full text-center bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white px-4 py-3 rounded-full text-sm font-medium cursor-pointer transition"
                 >
                   Sign In
                 </Link>

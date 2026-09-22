@@ -168,7 +168,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 7,
+      number: 6,
       title: "Marketing Communications",
       paragraphs: [
         "We may use your contact information to provide information about TechBinaryz, our products, services, updates, or initiatives where permitted by applicable law.",
@@ -184,7 +184,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 8,
+      number: 7,
       title: "Data Security",
       paragraphs: [
         "We take reasonable technical, organizational, and security measures designed to protect personal data against unauthorized access, alteration, disclosure, misuse, loss, or destruction.",
@@ -194,7 +194,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 9,
+      number: 8,
       title: "Data Retention",
       paragraphs: [
         "We retain personal data only for as long as reasonably necessary for the purposes for which it was collected or processed, including where necessary to:"
@@ -212,7 +212,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 10,
+      number: 9,
       title: "Your Privacy Rights",
       paragraphs: [
         "Depending on your location and applicable law, you may have certain rights regarding your personal data, which may include:"
@@ -233,7 +233,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 11,
+      number: 10,
       title: "Third-Party Websites and Services",
       paragraphs: [
         "Our websites or software solutions may contain links to third-party websites, applications, or services.",
@@ -242,7 +242,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 12,
+      number: 11,
       title: "Children's Privacy",
       paragraphs: [
         "Our services are generally intended for businesses, organizations, and general users and are not specifically directed toward children.",
@@ -251,7 +251,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 13,
+      number: 12,
       title: "International Data Transfers",
       paragraphs: [
         "Depending on the services and technology providers we use, personal data may be stored or processed in India or other countries.",
@@ -259,7 +259,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 14,
+      number: 13,
       title: "Changes to This Privacy Policy",
       paragraphs: [
         "We may update this Privacy Policy from time to time to reflect changes to our services, technology, legal requirements, or data-processing practices.",
@@ -268,7 +268,7 @@ const PrivacyPolicy = {
       ]
     },
     {
-      number: 15,
+      number: 14,
       title: "Contact Us",
       paragraphs: [
         "If you have questions, concerns, complaints, or requests regarding this Privacy Policy or the processing of your personal data, you may contact us at:"

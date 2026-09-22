@@ -1,11 +1,7 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import { CoreFeature } from "@/data/CoreFeature.data";
-
+import { Card, CardContent } from "@/components/ui/card";
+import { coreFeaturesData } from "@/data/Content-Change/Home.data";
 
 export default function Core() {
   return (
@@ -14,27 +10,24 @@ export default function Core() {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-base-brand">
-            Core Features of our Tools
+            {coreFeaturesData.heading}
           </h2>
           <p className="text-base-foreground mt-4 max-w-2xl mx-auto">
-            Unlock the Potential of Innovation.
-            Discover the Advanced AI Tools.
-            Transform Your Ideas into Reality with
-            Unmatched Precision and Intelligence.
+            {coreFeaturesData.subheading}
           </p>
         </div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-3xl mx-auto">
-          {CoreFeature.map((feature, index) => (
+          {coreFeaturesData.features.map((feature, index) => (
             <Card
               key={index}
               className="
-    bg-white/5
-    border-0
-    transition-all duration-30
-    rounded-2xl
-    shadow-[0px_40px_80px_-20px_rgba(107,110,148,0.12)]"
+                bg-white/5
+                border-0
+                transition-all duration-30
+                rounded-2xl
+                shadow-[0px_40px_80px_-20px_rgba(107,110,148,0.12)]"
             >
               <CardContent className="p-7 space-y-5">
                 {/* Icon Circle */}
@@ -46,9 +39,7 @@ export default function Core() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-semibold mb-3">
-                  {feature.title}
-                </h3>
+                <h3 className="text-lg font-semibold mb-3">{feature.title}</h3>
 
                 {/* Description */}
                 <p className="text-base-foreground text-md leading-relaxed line-clamp-3">
