@@ -59,17 +59,26 @@ export default function Prompt() {
             {promptData.trustedLabel}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto md:gap-15">
-            {partners.map((l) => (
-              <span className="relative w-15 h-15" key={l.alt}>
-                <Image
-                  src={l.src}
-                  alt={l.alt}
-                  fill
-                  className="opacity-70 hover:opacity-100 duration-300 object-contain"
-                />
-              </span>
-            ))}
+          <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto items-center">
+            {partners.map((l) =>
+              l.src ? (
+                <span className="relative w-24 h-10" key={l.alt}>
+                  <Image
+                    src={l.src}
+                    alt={l.alt}
+                    fill
+                    className="opacity-70 hover:opacity-100 duration-300 object-contain"
+                  />
+                </span>
+              ) : (
+                <span
+                  key={l.alt}
+                  className="text-base-foreground font-semibold text-sm md:text-base opacity-70 hover:opacity-100 duration-300 tracking-wide"
+                >
+                  {l.alt}
+                </span>
+              )
+            )}
           </div>
         </div>
       </div>
