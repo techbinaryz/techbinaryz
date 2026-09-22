@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Loader2, PhoneCall, Send } from "lucide-react";
 import { toast } from "sonner";
+import Link from "next/link";
+import { contactPageData } from "@/data/Content-Change/Contact-Us.data";
 
 type FormState = {
   firstName: string;
@@ -23,13 +25,18 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<FormState>>({});
 
+  const { fields } = contactPageData.form;
+
   const validate = (): boolean => {
     const newErrors: Partial<FormState> = {};
-    if (!form.firstName.trim()) newErrors.firstName = "First name is required";
-    if (!form.email.trim()) newErrors.email = "Email is required";
+    if (!form.firstName.trim())
+      newErrors.firstName = fields.firstName.errorMessage;
+    if (!form.email.trim())
+      newErrors.email = fields.email.errorMessage;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      newErrors.email = "Enter a valid email";
-    if (!form.message.trim()) newErrors.message = "Message is required";
+      newErrors.email = fields.email.errorInvalidMessage;
+    if (!form.message.trim())
+      newErrors.message = fields.message.errorMessage;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -51,19 +58,22 @@ export default function ContactForm() {
     await new Promise((res) => setTimeout(res, 1500));
     setLoading(false);
     setForm(initialForm);
-    toast.success(`Message sent! We'll get back to you shortly.`);
+    toast.success(contactPageData.form.successMessage);
   };
 
   return (
-    <div className="flex items-center py-10 justify-center bg-primary px-4">
+    <div className="flex flex-col items-center py-10 justify-center bg-primary px-4 gap-6">
+
+      {/* Form card */}
       <div className="w-full max-w-2xl bg-white backdrop-blur-md border border-white/10 rounded-3xl p-10 shadow-2xl">
         {/* Heading */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-slate-700 flex flex-col sm:flex-row items-center justify-center gap-2">
-            <PhoneCall className="w-7 h-7" /> Contact Us
+            <PhoneCall className="w-7 h-7" />
+            {contactPageData.heading}
           </h1>
           <p className="mt-2 text-sm text-slate-500">
-            Open a ticket, we will get back to you ASAP
+            {contactPageData.subheading}
           </p>
         </div>
 
@@ -72,15 +82,18 @@ export default function ContactForm() {
           {/* First + Last Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-slate-600 text-sm font-medium">First Name</label>
+              <label className="text-slate-600 text-sm font-medium">
+                {fields.firstName.label}
+              </label>
               <input
                 type="text"
                 name="firstName"
                 value={form.firstName}
                 onChange={handleChange}
-                placeholder="Enter your first name"
-                className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition ${errors.firstName ? "border-red-400" : "border-gray-300"
-                  }`}
+                placeholder={fields.firstName.placeholder}
+                className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition ${
+                  errors.firstName ? "border-red-400" : "border-gray-300"
+                }`}
               />
               {errors.firstName && (
                 <p className="text-red-500 text-xs pl-1">{errors.firstName}</p>
@@ -88,13 +101,15 @@ export default function ContactForm() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-slate-600 text-sm font-medium">Last Name</label>
+              <label className="text-slate-600 text-sm font-medium">
+                {fields.lastName.label}
+              </label>
               <input
                 type="text"
                 name="lastName"
                 value={form.lastName}
                 onChange={handleChange}
-                placeholder="Enter your last name"
+                placeholder={fields.lastName.placeholder}
                 className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
               />
             </div>
@@ -102,15 +117,18 @@ export default function ContactForm() {
 
           {/* Email */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-slate-600 text-sm font-medium">Email address</label>
+            <label className="text-slate-600 text-sm font-medium">
+              {fields.email.label}
+            </label>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="example@gmail.com"
-              className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition ${errors.email ? "border-red-400" : "border-gray-300"
-                }`}
+              placeholder={fields.email.placeholder}
+              className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition ${
+                errors.email ? "border-red-400" : "border-gray-300"
+              }`}
             />
             {errors.email && (
               <p className="text-red-500 text-xs pl-1">{errors.email}</p>
@@ -119,15 +137,18 @@ export default function ContactForm() {
 
           {/* Message */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-slate-600 text-sm font-medium">Message</label>
+            <label className="text-slate-600 text-sm font-medium">
+              {fields.message.label}
+            </label>
             <textarea
               name="message"
               value={form.message}
               onChange={handleChange}
               rows={5}
-              placeholder="Type your message"
-              className={`w-full bg-white border rounded-2xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 resize-none transition ${errors.message ? "border-red-400" : "border-gray-300"
-                }`}
+              placeholder={fields.message.placeholder}
+              className={`w-full bg-white border rounded-2xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 resize-none transition ${
+                errors.message ? "border-red-400" : "border-gray-300"
+              }`}
             />
             {errors.message && (
               <p className="text-red-500 text-xs pl-1">{errors.message}</p>
@@ -143,17 +164,35 @@ export default function ContactForm() {
             {loading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                Sending...
+                {contactPageData.form.loadingLabel}
               </>
             ) : (
               <>
                 <Send className="w-4 h-4" />
-                Send
+                {contactPageData.form.submitLabel}
               </>
             )}
           </button>
 
         </form>
+
+        {/* Data usage note */}
+        <p className="mt-6 text-xs text-slate-400 text-center leading-relaxed">
+          {contactPageData.dataNote}
+        </p>
+
+        {/* Legal links */}
+        <div className="mt-4 flex flex-wrap justify-center gap-3">
+          {contactPageData.legalLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-xs text-teal-500 hover:text-teal-400 transition underline underline-offset-2"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
