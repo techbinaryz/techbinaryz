@@ -1,4 +1,4 @@
-import { HoverCheck } from "./General/HoverCheck";
+import { impactData } from "@/data/Content-Change/About-Us.data";
 
 export default function Impact() {
   return (
@@ -7,18 +7,33 @@ export default function Impact() {
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-base-brand">
-            The Impact
+            {impactData.heading}
           </h2>
           <p className="text-base-foreground mt-4 max-w-lg mx-auto">
-            Powering 50+ launched startups.
-            Thousands of AI generations daily.
-            Built by developers. For developers.s
+            {impactData.subheading}
           </p>
         </div>
 
-        {/* Centered Button */}
-        <div className="flex justify-center">
-          <HoverCheck />
+        {/* Stats grid */}
+        <div className="flex flex-wrap justify-center gap-6">
+          {impactData.stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="
+                flex flex-col items-center justify-center
+                bg-primary-brand border border-white/10
+                rounded-2xl px-10 py-8 min-w-[160px]
+                transition-all duration-200 hover:border-white/30
+              "
+            >
+              <span className="text-3xl font-bold text-base-brand">
+                {stat.value}
+              </span>
+              <span className="text-sm text-base-foreground mt-2 text-center">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,5 +1,7 @@
 import { partners } from "@/data/Partner.data";
+import { promptData } from "@/data/Content-Change/About-Us.data";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Prompt() {
   return (
@@ -7,30 +9,30 @@ export default function Prompt() {
       <div className="2xl:max-w-7xl">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-base-brand">
-            Beyond the Prompt.
+            {promptData.heading}
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-base-foreground leading-relaxed">
-            We don't just call APIs. We design the
-            systems that make AI usable.
-            Infrastructure. Orchestration.
-            Architecture.
+            {promptData.subheading}
           </p>
         </div>
+
         {/* Buttons */}
         <div className="mt-8 flex justify-center items-center gap-4">
-          <button className="rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary cursor-pointer px-6 py-3.5 text-sm font-medium text-white transition">
-            Explore Apps
-          </button>
+          <Link
+            href={promptData.primaryAction.href}
+            className="rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand cursor-pointer px-6 py-3.5 text-sm font-medium text-white transition"
+          >
+            {promptData.primaryAction.label}
+          </Link>
 
-          {/* Watch Intro Video */}
-          <button className="flex items-center gap-3 cursor-pointer rounded-full  px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition">
+          <button className="flex items-center gap-3 cursor-pointer rounded-full px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition">
             <span
               className="size-8 rounded-full inline-flex items-center justify-center"
-            style={{
-              background:
-                "var(--Gradient-2, linear-gradient(97deg,#725cff 0%,#b5b1ff 140.21%))",
-            }}
+              style={{
+                background:
+                  "var(--Gradient-2, linear-gradient(97deg,#725cff 0%,#b5b1ff 140.21%))",
+              }}
             >
               <svg
                 width="14"
@@ -46,21 +48,18 @@ export default function Prompt() {
               </svg>
             </span>
             <span className="text-base-foreground">
-              Watch Intro Video
+              {promptData.secondaryAction.label}
             </span>
           </button>
         </div>
 
         {/* Company Logos */}
         <div className="mt-16">
-
           <p className="mb-6 text-center text-base-foreground text-lg font-medium">
-            Trusted by world's largest companies
-            including...
+            {promptData.trustedLabel}
           </p>
 
-
-          <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto  md:gap-15">
+          <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto md:gap-15">
             {partners.map((l) => (
               <span className="relative w-15 h-15" key={l.alt}>
                 <Image
@@ -72,11 +71,8 @@ export default function Prompt() {
               </span>
             ))}
           </div>
-
         </div>
       </div>
-
-
     </section>
   );
 }
