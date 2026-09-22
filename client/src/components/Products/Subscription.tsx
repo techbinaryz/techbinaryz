@@ -1,86 +1,71 @@
-import { subscriptionData } from "@/data/Subscription.data";
+import { productsData } from "@/data/Content-Change/Products.data";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export default function Subscription() {
   return (
-    <section className="min-h-screen bg-pop-brand flex items-center justify-center px-6 py-20">
+    <section className="bg-pop-brand flex items-center justify-center px-6 py-20">
       <section className="w-full">
-        <div className="2xl:max-w-7xl mx-ato">
+        <div className="2xl:max-w-7xl mx-auto">
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <h1 className="text-4xl md:text-5xl text-base-brand font-bold leading-tight">
-              Start Your Content Creation Journey
-              with AI
+              {productsData.heading}
             </h1>
-
             <p className="text-base-foreground mt-4 max-w-xl mx-auto">
-              Collaborate with AI to generate
-              content that resonates with your
-              audience, drives and delivers
-              meaningful results across all
-              platforms.
+              {productsData.subheading}
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {subscriptionData.map((plan, index) => (
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+            {productsData.products.map((product, index) => (
               <div
                 key={index}
-                className={`relative rounded-2xl p-8 backdrop-blur-xl border transition-all duration-300 
-              ${plan.highlighted
-                    ? "bg-tertiary-brand-renew border border-indigo-500 scale-105"
-                    : "bg-tertiary-brand-renew hover:border-gray-600"
-                  }`}
+                className="relative rounded-2xl p-8 bg-white border border-indigo-200 hover:border-indigo-400 transition-all duration-300 flex flex-col h-full"
               >
-                {plan.highlighted && (
-                  <span className="absolute top-4 right-4 bg-tertiary text-xs px-3 py-1 rounded-full text-white">
-                    Popular
-                  </span>
-                )}
+                {/* Badge */}
+                <span className="absolute top-4 right-4 bg-tertiary text-white text-xs px-3 py-1 rounded-full font-medium">
+                  {product.type}
+                </span>
 
-                <h3 className="text-lg font-semibold text-base-foreground mb-4">
-                  {plan.name}
-                </h3>
-
-                <div className="mb-4">
-                  <span className="text-4xl font-bold text-base-foreground">
-                    {plan.price}
-                  </span>
-                  {plan.price !== "Let's talk" && (
-                    <span className="text-base-foreground text-sm ml-1">
-                      Per month
-                    </span>
-                  )}
+                {/* Icon + Name */}
+                <div className="flex items-center gap-2 mb-4">
+                  <product.icon className="w-5 h-5 text-slate-700" />
+                  <h3 className="text-base font-semibold text-slate-700">
+                    {product.name}
+                  </h3>
                 </div>
 
-                <p className="text-base-foreground text-sm mb-6">
-                  {plan.description}
+                {/* Tagline — fixed height so descriptions start at same line */}
+                <div className="mb-4 min-h-[5.5rem]">
+                  <span className="text-xl font-bold text-slate-800 leading-snug">
+                    {product.tagline}
+                  </span>
+                </div>
+
+                {/* Description — flex-1 pushes button to bottom */}
+                <p className="text-slate-500 text-sm leading-relaxed flex-1 line-clamp-5">
+                  {product.description}
                 </p>
 
-                <button
-                  className={`w-full py-3 rounded-xl font-medium transition-all duration-300
-                ${plan.highlighted
-                      ? "bg-tertiary hover:bg-[#c0fdfb] hover:text-primary text-white shadow-md"
-                      : "bg-[#1F2937] hover:bg-[#374151] text-gray-200"
-                    }`}
+                {/* CTA — pinned to same line across all cards via mt-auto */}
+                <Link
+                  href="/contact-us"
+                  className="block w-full py-3 rounded-xl font-medium text-center text-sm text-white bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand transition-all duration-300 mt-6 mb-6"
                 >
-                  {plan.button}
-                </button>
+                  Learn More
+                </Link>
 
-                {/* Features */}
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map(
-                    (feature, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 text-base-foreground text-sm"
-                      >
-                        <Check
-                          size={16}
-                          className="text-indigo-500 mt-1"
-                        />
-                        {feature}
-                      </li>
-                    ),
-                  )}
+                {/* Tags */}
+                <ul className="space-y-3">
+                  {product.tags.map((tag, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-2 text-slate-600 text-sm"
+                    >
+                      <Check size={15} className="text-indigo-500 shrink-0" />
+                      {tag}
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}

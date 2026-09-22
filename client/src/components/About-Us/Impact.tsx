@@ -21,15 +21,16 @@ export default function Impact() {
               key={stat.label}
               className="
                 flex flex-col items-center justify-center
-                bg-primary-brand border border-white/10
+                bg-white border border-slate-200
                 rounded-2xl px-10 py-8 min-w-[160px]
-                transition-all duration-200 hover:border-white/30
+                shadow-sm transition-all duration-200
+                hover:shadow-md hover:border-tertiary/50
               "
             >
-              <span className="text-3xl font-bold text-base-brand">
+              <span className="text-3xl font-bold text-tertiary">
                 {stat.value}
               </span>
-              <span className="text-sm text-base-foreground mt-2 text-center">
+              <span className="text-sm text-slate-500 mt-2 text-center">
                 {stat.label}
               </span>
             </div>
