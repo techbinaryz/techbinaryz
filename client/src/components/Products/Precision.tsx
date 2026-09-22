@@ -23,7 +23,7 @@ export default function Precision() {
   return (
     <main className="bg-primary-foreground">
       <section className="px-6 bg-linear-to-b from-primary-foreground via-accent-white to-tertiary">
-        <div className="flex min-h-[70vh] flex-col items-center justify-center text-center 2xl:max-w-7xl mx-auto">
+        <div className="flex min-h-[70vh] flex-col items-center justify-center text-center 2xl:max-w-7xl mx-auto py-24">
 
           <div className="max-w-4xl">
             {/* Eyebrow */}
@@ -32,7 +32,7 @@ export default function Precision() {
             </p>
 
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-base-brand leading-tight">
-              We Don't Ship Templates. We Ship Solutions.
+              We ship Solutions
             </h1>
 
             <p className="mt-6 text-lg md:text-xl text-base-foreground leading-relaxed max-w-2xl mx-auto">
