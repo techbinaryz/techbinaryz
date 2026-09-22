@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
-import Header from "@/components/Global/Header";
-import Footer from "@/components/Global/Footer";
-import { Toaster } from "sonner";
+import AppLayoutProvider from "@/components/AppLayout/AppLayoutProvider";
 
 
 const geist = Geist({
@@ -47,12 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className={`${geist.className} antialiased`}>
-          <Header />
-          <main className="pt-16 md:pt-20">
-            {children}
-          </main>
-          <Footer />
-          <Toaster position="top-right" richColors />
+        <AppLayoutProvider>
+          {children}
+        </AppLayoutProvider>
       </body>
     </html>
   );

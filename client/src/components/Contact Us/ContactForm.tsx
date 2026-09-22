@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Loader2, PhoneCall, Send } from "lucide-react";
-import { toast } from "sonner";
 import Link from "next/link";
 import { contactPageData } from "@/data/Content-Change/Contact-Us.data";
 
@@ -58,7 +57,6 @@ export default function ContactForm() {
     await new Promise((res) => setTimeout(res, 1500));
     setLoading(false);
     setForm(initialForm);
-    toast.success(contactPageData.form.successMessage);
   };
 
   return (

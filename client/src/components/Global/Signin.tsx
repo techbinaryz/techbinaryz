@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Loader2, LogIn } from "lucide-react";
-import { toast } from "sonner";
 
 type FormState = {
   firstName: string;
@@ -51,7 +50,6 @@ export default function SignInForm() {
     await new Promise((res) => setTimeout(res, 1500));
     setLoading(false);
     setForm(initialForm);
-    toast.success("Signed in successfully!");
   };
 
   return (

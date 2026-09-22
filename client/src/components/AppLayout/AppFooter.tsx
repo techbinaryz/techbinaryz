@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa6";
 import { footerData } from "@/data/Content-Change/Home.data";
 
-export default function Footer() {
+export default function AppFooter() {
   return (
     <footer className="relative w-full px-2 overflow-hidden bg-primary-brand">
       {/* Mobile glow */}
