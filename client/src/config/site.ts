@@ -1,8 +1,6 @@
-import { Metadata } from "next";
-
 export const siteConfig = {
   name: "TechBinaryz",
-  description: "Empowering businesses with cutting-edge AI solutions and starter kits.",
+  description: "Empowering businesses with cutting-edge IT solutions and Solving .",
   url: "https://techbinaryz.com",
   ogImage: "https://techbinaryz.com/og.jpg",
   creator: "TechBinaryz",
@@ -10,19 +8,19 @@ export const siteConfig = {
 
 export const routeMetadata = {
   home: {
-    title: "Next Generation Solutions",
-    description: "Build robust AI applications faster with TechBinaryz's comprehensive starter kit.",
+    title: "Home",
+    description: "Build robust applications faster with TechBinaryz.",
   },
   about: {
     title: "About Us",
-    description: "Learn about our company, our expert team, core pillars, and our mission to revolutionize AI development.",
+    description: "Learn about our company, our expert team, policies, and our mission to revolutionize Technical Solutions.",
+  },
+  products: {
+    title: "Products & Facilities",
+    description: "Explore our range of products that solves your daily life problems, innovative products, subscription plans, and premium facilities.",
   },
   contact: {
     title: "Contact Us",
     description: "Have questions or want to learn more? Contact the TechBinaryz team today for support and inquiries.",
-  },
-  products: {
-    title: "Products & Facilities",
-    description: "Explore our range of precision AI tools, innovative products, subscription plans, and premium facilities.",
   },
 };

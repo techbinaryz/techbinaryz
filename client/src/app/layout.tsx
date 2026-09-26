@@ -17,9 +17,8 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "TechBinaryz",
-    "AI development",
     "tech solutions",
-    "machine learning",
+    "It services",
   ],
   authors: [{ name: siteConfig.creator, url: siteConfig.url }],
   creator: siteConfig.creator,

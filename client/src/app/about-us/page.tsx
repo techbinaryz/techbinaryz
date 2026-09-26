@@ -5,7 +5,7 @@ import AboutPage from "@/views/about-us/About.page";
 export const metadata: Metadata = {
   title: `${routeMetadata.about.title} | ${siteConfig.name}`,
   description: routeMetadata.about.description,
-  keywords: ["TechBinaryz", "about us", "AI company", "tech team"],
+  keywords: ["TechBinaryz", "about us", "tech team"],
   authors: [{ name: siteConfig.creator, url: siteConfig.url }],
   openGraph: {
     type: "website",
