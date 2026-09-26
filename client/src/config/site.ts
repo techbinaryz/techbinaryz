@@ -10,7 +10,7 @@ export const siteConfig = {
 
 export const routeMetadata = {
   home: {
-    title: "Next Generation AI Starter Kit",
+    title: "Next Generation Solutions",
     description: "Build robust AI applications faster with TechBinaryz's comprehensive starter kit.",
   },
   about: {

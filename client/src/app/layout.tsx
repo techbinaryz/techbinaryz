@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "TechBinaryz",
-    "AI starter kit",
     "AI development",
     "tech solutions",
     "machine learning",
