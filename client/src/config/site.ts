@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "TechBinaryz",
   description: "Empowering businesses with cutting-edge IT solutions and Solving .",
   url: "https://techbinaryz.com",
-  ogImage: "https://techbinaryz.com/og.jpg",
+  ogImage: "https://techbinaryz.com/TechBinary.png",
   creator: "TechBinaryz",
 };
 
@@ -22,5 +22,9 @@ export const routeMetadata = {
   contact: {
     title: "Contact Us",
     description: "Have questions or want to learn more? Contact the TechBinaryz team today for support and inquiries.",
+  },
+  signIn: {
+    title: "Sign In",
+    description: "Sign in to your TechBinaryz account to access your dashboard, products, and premium features.",
   },
 };
