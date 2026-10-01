@@ -30,38 +30,32 @@ export const coreFeaturesData = {
     {
       icon: Globe,
       title: "Web Application Development",
-      description:
-        "Full-stack web platforms tailored to your workflows — from internal tools to customer-facing SaaS products.",
+      description: "Full-stack platforms built for your workflows — internal tools to SaaS.",
     },
     {
       icon: Smartphone,
       title: "Mobile App Development",
-      description:
-        "Cross-platform and native mobile applications that deliver seamless experiences on iOS and Android.",
+      description: "Cross-platform apps with seamless experiences on iOS and Android.",
     },
     {
       icon: Code2,
       title: "Custom Software Solutions",
-      description:
-        "Bespoke software engineered around your exact business requirements — not off-the-shelf compromises.",
+      description: "Software engineered around your exact requirements — no off-the-shelf compromises.",
     },
     {
       icon: Layers,
       title: "Our Flagship Product",
-      description:
-        "TechBinaryz's own platform — a ready-to-deploy solution built with the same standards we apply to every client project.",
+      description: "A ready-to-deploy platform built to the same standards as every client project.",
     },
     {
       icon: ShieldCheck,
       title: "Maintenance & Support",
-      description:
-        "Ongoing technical support, security patches, and performance optimisations to keep your systems running smoothly.",
+      description: "Security patches, updates, and performance optimisations to keep systems running.",
     },
     {
       icon: Settings2,
       title: "IT Consulting",
-      description:
-        "Strategic guidance on architecture, tech stack selection, and digital transformation for businesses at any stage.",
+      description: "Strategic guidance on architecture, tech stack, and digital transformation.",
     },
   ],
 };
@@ -113,8 +107,8 @@ export const servicesData = {
     { icon: Wrench, label: "Maintenance" },
   ],
   bottomHeading: "The fastest way to ship your next product",
-  bottomSubheading:
-    "We handle architecture, development, and delivery so your team can stay focused on the business.",
+  // bottomSubheading:
+  //   "We handle architecture, development, and delivery so your team can stay focused on the business.",
   cta: "Start a Project",
   ctaHref: "/contact-us",
 };

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import {
-  FaDiscord,
   FaGithub,
   FaFacebookF,
   FaXTwitter,
   FaLinkedin,
 } from "react-icons/fa6";
 import { footerData } from "@/data/Content-Change/Home.data";
+import { Button } from "@/components/ui/button";
 
 export default function AppFooter() {
   return (
@@ -96,11 +96,11 @@ export default function AppFooter() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="h-12 px-4 rounded-full bg-transparent border border-gray-700 text-sm text-slate-500 text-center focus:outline-none focus:border-purple-500"
+                  className="h-9 px-4 rounded-full bg-transparent border border-gray-700 text-sm text-slate-500 text-center focus:outline-none focus:border-purple-500"
                 />
-                <button className="h-12 cursor-pointer rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white text-sm font-medium transition">
+                <Button className="cursor-pointer rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white text-sm font-medium transition">
                   Subscribe Now
-                </button>
+                </Button>
               </div>
             </div>
 

@@ -36,10 +36,10 @@ export default function FAQ() {
               value={item.id}
               className="border-b border-slate-700"
             >
-              <AccordionTrigger className="group flex items-center justify-between text-left text-lg hover:no-underline [&>svg]:hidden">
+              <AccordionTrigger className="group flex items-center justify-between hover:no-underline [&>svg]:hidden">
                 <span className="text-base-brand">{item.question}</span>
               </AccordionTrigger>
-              <AccordionContent className="text-slate-400 leading-relaxed text-lg">
+              <AccordionContent className="text-slate-400 leading-relaxed text-[15px]">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

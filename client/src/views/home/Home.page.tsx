@@ -1,17 +1,17 @@
-import Core from "@/components/Home/Core";
+import Build from "@/components/Home/Build";
 import FAQ from "@/components/Home/FAQ";
-import Key from "@/components/Home/Key";
 import Tool from "@/components/Home/Tools";
-import Transform from "@/components/Home/Transform";
+import TechnologyWeBuild from "@/components/Home/TechnologyWeBuild";
+import WhyUs from "@/components/Home/WhyUs";
 
 
 function HomePage() {
   return (
     <>
-      <Transform />
-      <Core />
+      <TechnologyWeBuild />
+      <Build />
       <Tool />
-      <Key />
+      <WhyUs />
       <FAQ />
     </>
   );

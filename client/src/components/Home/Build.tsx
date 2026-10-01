@@ -3,9 +3,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { coreFeaturesData } from "@/data/Content-Change/Home.data";
 
-export default function Core() {
+export default function Build() {
   return (
-    <section className="w-full bg-primary py-30 px-6">
+    <section className="w-full bg-primary pt-30 pb-5 px-6">
       <div className="2xl:max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-16">
@@ -22,16 +22,11 @@ export default function Core() {
           {coreFeaturesData.features.map((feature, index) => (
             <Card
               key={index}
-              className="
-                bg-white/5
-                border-0
-                transition-all duration-30
-                rounded-2xl
-                shadow-[0px_40px_80px_-20px_rgba(107,110,148,0.12)]"
+              className="bg-white/5 border-0 rounded-2xl"
             >
               <CardContent className="p-7 space-y-5">
                 {/* Icon Circle */}
-                <div className="w-14 h-14 flex items-center justify-center mx-auto rounded-full bg-linear-to-b from-tertiary to-primary border border-white">
+                <div className="w-14 h-14 flex items-center justify-center  rounded-full bg-linear-to-b from-tertiary to-primary border border-white">
                   <feature.icon
                     className="w-6 h-6 text-white"
                     fill="white"
@@ -39,10 +34,12 @@ export default function Core() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-semibold mb-3">{feature.title}</h3>
+                <p className="text-sm font-semibold uppercase tracking-widest text-tertiary mb-4 ">
+                  {feature.title}
+                </p>
 
                 {/* Description */}
-                <p className="text-base-foreground text-md leading-relaxed line-clamp-3">
+                <p className="text-base-foreground text-[12px]  leading-relaxed line-clamp-3">
                   {feature.description}
                 </p>
               </CardContent>
