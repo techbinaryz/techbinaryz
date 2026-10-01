@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Loader2, LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type FormState = {
   firstName: string;
@@ -137,23 +138,23 @@ export default function SignInForm() {
           </div>
 
           {/* Submit */}
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2"
           >
-              {loading ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                <>
-                  <LogIn className="w-4 h-4" />
-                  Sign In
-                </>
-              )}
-            </button>
+            {loading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Signing in...
+              </>
+            ) : (
+              <>
+                <LogIn className="w-4 h-4" />
+                Sign In
+              </>
+            )}
+          </Button>
 
         </form>
       </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Loader2, PhoneCall, Send } from "lucide-react";
 import Link from "next/link";
 import { contactPageData } from "@/data/Content-Change/Contact-Us.data";
+import { Button } from "@/components/ui/button";
 
 type FormState = {
   firstName: string;
@@ -154,10 +155,10 @@ export default function ContactForm() {
           </div>
 
           {/* Submit */}
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -170,7 +171,7 @@ export default function ContactForm() {
                 {contactPageData.form.submitLabel}
               </>
             )}
-          </button>
+          </Button>
 
         </form>
 
