@@ -38,9 +38,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((t) => (
           <div
             key={t.id}
-            className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-lg min-w-[300px] animate-in slide-in-from-top-5"
+            className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-lg min-w-75 animate-in slide-in-from-top-5"
           >
-            <CheckCircle2 className="h-5 w-5 text-teal-500 flex-shrink-0" />
+            <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0" />
             <span className="text-sm text-slate-700 flex-1">{t.message}</span>
             <button
               onClick={() => removeToast(t.id)}
