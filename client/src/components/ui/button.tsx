@@ -19,6 +19,8 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        teal: "rounded-full bg-tertiary text-white hover:bg-[#c0fdfb] hover:text-primary-brand cursor-pointer font-medium",
+        video: "rounded-full gap-3 border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 cursor-pointer text-base-foreground",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

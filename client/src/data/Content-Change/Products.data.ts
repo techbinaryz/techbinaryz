@@ -22,7 +22,7 @@ export const productsData = {
             tagline: "Official Website & Admin Panel",
             description:
                 "End-to-end web solution for CCTP-WB — a public-facing job portal paired with a full admin panel for managing listings, applications, and user data.",
-            type: "Client Project",
+            type: "Client",
             icon: Briefcase,
             tags: ["Web App", "Admin Panel", "Job Portal", "Government"],
             highlighted: false,
@@ -46,7 +46,7 @@ export const productsData = {
                 "A scheduling and time management tool built to organise, track, and optimise package delivery timelines and resource allocation.",
             type: "Own Product",
             icon: Calendar,
-            tags: ["Scheduling", "Time Management", "Logistics"],
+            tags: ["Package", "Scheduling", "Time Management", "Logistics"],
             highlighted: false,
         },
     ],

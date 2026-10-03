@@ -1,6 +1,7 @@
 import { productsData } from "@/data/Content-Change/Products.data";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Subscription() {
   return (
@@ -48,12 +49,12 @@ export default function Subscription() {
                 </p>
 
                 {/* CTA — pinned to same line across all cards via mt-auto */}
-                <Link
-                  href="/contact-us"
-                  className="block w-full py-3 rounded-xl font-medium text-center text-sm text-white bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand transition-all duration-300 mt-6 mb-6"
+                <Button
+                  asChild
+                  className="w-full py-3 rounded-xl font-medium text-center text-sm text-white bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand transition-all duration-300 mt-6 mb-6"
                 >
-                  Learn More
-                </Link>
+                  <Link href="/contact-us">Learn More</Link>
+                </Button>
 
                 {/* Tags */}
                 <ul className="space-y-3">

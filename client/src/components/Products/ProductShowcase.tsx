@@ -1,6 +1,7 @@
 import { productsData } from "@/data/Content-Change/Products.data";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function ProductShowcase() {
   return (
@@ -56,16 +57,16 @@ export default function ProductShowcase() {
                 </p>
 
                 {/* CTA button */}
-                <Link
-                  href="/contact-us"
-                  className={`block w-full py-3 rounded-xl font-medium transition-all duration-300 text-center text-sm
+                <Button
+                  asChild
+                  className={`w-full py-3 rounded-xl font-medium transition-all duration-300 text-sm
                     ${product.highlighted
                       ? "bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white shadow-md"
                       : "bg-[#1F2937] hover:bg-[#374151] text-gray-200"
                     }`}
                 >
-                  Learn More
-                </Link>
+                  <Link href="/contact-us">Learn More</Link>
+                </Button>
 
                 {/* Tags as feature list */}
                 <ul className="mt-6 space-y-3">

@@ -23,7 +23,7 @@ export default function Precision() {
   return (
     <main className="bg-primary-foreground">
       <section className="px-6 bg-linear-to-b from-primary-foreground via-accent-white to-tertiary">
-        <div className="flex min-h-[70vh] flex-col items-center justify-center text-center 2xl:max-w-7xl mx-auto py-24">
+        <div className="flex min-h-[70vh] flex-col items-center justify-center text-center 2xl:max-w-7xl mx-auto pt-18 pb-24">
 
           <div className="max-w-4xl">
             {/* Eyebrow */}
@@ -39,7 +39,7 @@ export default function Precision() {
               Every line of code we write exists for a reason.
               No bloat. No copy-paste architecture. Just
               precise, production-ready technology built around
-              what your business actually needs.
+              what your business actually needs in setrbices
             </p>
           </div>
 
@@ -47,9 +47,9 @@ export default function Precision() {
             {badges.map((badge) => (
               <Badge
                 key={badge.label}
-                className="px-4 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-tertiary hover:text-white hover:border-tertiary cursor-pointer transition-all duration-200 gap-2"
+                className="px-4 py-2 bg-base-brand border border-transparent hover:bg-tertiary transition-colors duration-500 cursor-pointer gap-2 justify-center w-[calc(50%-6px)] sm:w-auto"
               >
-                <badge.icon className="w-4 h-4" />
+                <badge.icon className="w-4 h-4 shrink-0" />
                 {badge.label}
               </Badge>
             ))}

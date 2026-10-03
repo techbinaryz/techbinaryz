@@ -2,6 +2,8 @@ import { partners } from "@/data/Partner.data";
 import { promptData } from "@/data/Content-Change/About-Us.data";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
 
 export default function Prompt() {
   return (
@@ -19,14 +21,19 @@ export default function Prompt() {
 
         {/* Buttons */}
         <div className="mt-8 flex justify-center items-center gap-4">
-          <Link
-            href={promptData.primaryAction.href}
+          <Button
+            asChild
             className="rounded-full bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand cursor-pointer px-6 py-3.5 text-sm font-medium text-white transition"
           >
-            {promptData.primaryAction.label}
-          </Link>
+            <Link href={promptData.primaryAction.href}>
+              {promptData.primaryAction.label}
+            </Link>
+          </Button>
 
-          <button className="flex items-center gap-3 cursor-pointer rounded-full px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition">
+          <Button
+            variant="ghost"
+            className="flex items-center gap-3 cursor-pointer rounded-full px-2 py-2 pr-4 text-sm border border-base-brand bg-white/10 backdrop-blur-sm hover:bg-white/20 transition h-auto"
+          >
             <span
               className="size-8 rounded-full inline-flex items-center justify-center"
               style={{
@@ -50,7 +57,7 @@ export default function Prompt() {
             <span className="text-base-foreground">
               {promptData.secondaryAction.label}
             </span>
-          </button>
+          </Button>
         </div>
 
         {/* Company Logos */}
