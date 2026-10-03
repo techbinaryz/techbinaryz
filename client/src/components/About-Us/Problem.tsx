@@ -18,13 +18,7 @@ export default function Problem() {
             </p>
           ))}
 
-          <h3 className="mt-12 text-2xl font-semibold">
-            {problemData.missionHeading}
-          </h3>
-
-          <p className="mt-6 text-base-random text-lg max-w-lg leading-relaxed">
-            {problemData.missionParagraph}
-          </p>
+         
         </div>
 
         {/* Visible on large screens only */}

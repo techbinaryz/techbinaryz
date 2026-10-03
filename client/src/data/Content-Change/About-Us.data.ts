@@ -30,11 +30,11 @@ export const creatorData = {
   quote:
     '"Unless the agreement says otherwise, we own the craft. Our frameworks, our methods, our know-how — earned across every project we\'ve shipped."',
   techStack: [
-    { src: "https://cdn.simpleicons.org/nextdotjs", alt: "Next.js" },
     { src: "https://cdn.simpleicons.org/react", alt: "React" },
     { src: "https://cdn.simpleicons.org/typescript", alt: "TypeScript" },
+        { src: "https://cdn.simpleicons.org/nextdotjs", alt: "Next.js" },
+
     { src: "https://cdn.simpleicons.org/nodedotjs", alt: "Node.js" },
-    { src: "https://cdn.simpleicons.org/postgresql", alt: "PostgreSQL" },
     { src: "https://cdn.simpleicons.org/docker", alt: "Docker" },
   ],
 };
@@ -44,12 +44,12 @@ export const creatorData = {
 export const impactData = {
   heading: "The Commitment",
   subheading:
-    "We make reasonable efforts to maintain availability and functionality across every solution we deliver — with structured support, timely updates, and security patches built into every engagement.",
+    "We make reasonable efforts to maintain availability and functionality across every solution.",
   stats: [
     { label: "Projects Delivered", value: "50+" },
     { label: "Services Offered", value: "6+" },
     { label: "Support & Maintenance", value: "Ongoing" },
-    { label: "Governing Law", value: "India" },
+    { label: "The Governing Law", value: "India" },
   ],
 };
 
