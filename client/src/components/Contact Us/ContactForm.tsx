@@ -1,63 +1,57 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Loader2, PhoneCall, Send } from "lucide-react";
 import Link from "next/link";
 import { contactPageData } from "@/data/Content-Change/Contact-Us.data";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/sonner";
 
-type FormState = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  message: string;
-};
+const formSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().optional(),
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Enter a valid email"),
+  message: z.string().min(1, "Message is required"),
+});
 
-const initialForm: FormState = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  message: "",
-};
+type FormData = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>(initialForm);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<Partial<FormState>>({});
+  const { toast } = useToast();
 
   const { fields } = contactPageData.form;
 
-  const validate = (): boolean => {
-    const newErrors: Partial<FormState> = {};
-    if (!form.firstName.trim())
-      newErrors.firstName = fields.firstName.errorMessage;
-    if (!form.email.trim())
-      newErrors.email = fields.email.errorMessage;
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      newErrors.email = fields.email.errorInvalidMessage;
-    if (!form.message.trim())
-      newErrors.message = fields.message.errorMessage;
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+    },
+  });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof FormState]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!validate()) return;
+  const onSubmit = async (data: FormData) => {
     setLoading(true);
     await new Promise((res) => setTimeout(res, 1500));
+    console.log(data);
+    toast("Message sent successfully!");
     setLoading(false);
-    setForm(initialForm);
+    reset();
   };
 
   return (
@@ -76,81 +70,68 @@ export default function ContactForm() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
 
           {/* First + Last Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-slate-600 text-sm font-medium">
+              <Label className="text-slate-600 text-sm font-medium">
                 {fields.firstName.label}
-              </label>
-              <input
+              </Label>
+              <Input
                 type="text"
-                name="firstName"
-                value={form.firstName}
-                onChange={handleChange}
                 placeholder={fields.firstName.placeholder}
-                className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition ${
-                  errors.firstName ? "border-red-400" : "border-gray-300"
-                }`}
+                className={errors.firstName ? "border-red-400" : ""}
+                {...register("firstName")}
               />
               {errors.firstName && (
-                <p className="text-red-500 text-xs pl-1">{errors.firstName}</p>
+                <p className="text-red-500 text-xs pl-1">{errors.firstName.message}</p>
               )}
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-slate-600 text-sm font-medium">
+              <Label className="text-slate-600 text-sm font-medium">
                 {fields.lastName.label}
-              </label>
-              <input
+              </Label>
+              <Input
                 type="text"
-                name="lastName"
-                value={form.lastName}
-                onChange={handleChange}
                 placeholder={fields.lastName.placeholder}
-                className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
+                {...register("lastName")}
               />
             </div>
           </div>
 
           {/* Email */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-slate-600 text-sm font-medium">
+            <Label className="text-slate-600 text-sm font-medium">
               {fields.email.label}
-            </label>
-            <input
+            </Label>
+            <Input
               type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
               placeholder={fields.email.placeholder}
-              className={`w-full bg-white border rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition ${
-                errors.email ? "border-red-400" : "border-gray-300"
-              }`}
+              className={errors.email ? "border-red-400" : ""}
+              {...register("email")}
             />
             {errors.email && (
-              <p className="text-red-500 text-xs pl-1">{errors.email}</p>
+              <p className="text-red-500 text-xs pl-1">{errors.email.message}</p>
             )}
           </div>
 
           {/* Message */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-slate-600 text-sm font-medium">
+            <Label className="text-slate-600 text-sm font-medium">
               {fields.message.label}
-            </label>
+            </Label>
             <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              rows={5}
               placeholder={fields.message.placeholder}
+              rows={5}
               className={`w-full bg-white border rounded-2xl px-4 py-3 text-slate-700 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 resize-none transition ${
                 errors.message ? "border-red-400" : "border-gray-300"
               }`}
+              {...register("message")}
             />
             {errors.message && (
-              <p className="text-red-500 text-xs pl-1">{errors.message}</p>
+              <p className="text-red-500 text-xs pl-1">{errors.message.message}</p>
             )}
           </div>
 

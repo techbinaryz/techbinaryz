@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
 import AppLayoutProvider from "@/components/AppLayout/AppLayoutProvider/AppLayoutProvider";
+import { ToastProvider } from "@/components/ui/sonner";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -48,7 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className={`${geist.className} bg-white antialiased`}>
-        <AppLayoutProvider>{children}</AppLayoutProvider>
+        <ToastProvider>
+          <AppLayoutProvider>{children}</AppLayoutProvider>
+        </ToastProvider>
       </body>
     </html>
   );
