@@ -1,8 +1,8 @@
-import Build from "@/components/Home/Build";
-import FAQ from "@/components/Home/FAQ";
-import Tool from "@/components/Home/Tools";
-import TechnologyWeBuild from "@/components/Home/TechnologyWeBuild";
-import WhyUs from "@/components/Home/WhyUs";
+import Build from "@/components/home/Build";
+import FAQ from "@/components/home/FAQ";
+import Tool from "@/components/home/Tools";
+import TechnologyWeBuild from "@/components/home/TechnologyWeBuild";
+import WhyUs from "@/components/home/WhyUs";
 
 
 function HomePage() {

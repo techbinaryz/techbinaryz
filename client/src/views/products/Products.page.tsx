@@ -1,7 +1,7 @@
-import Facilities from "@/components/Products/Facilities";
-import Feedback from "@/components/Products/Feedback";
-import Precision from "@/components/Products/Precision";
-import Subscription from "@/components/Products/Subscription";
+import Facilities from "@/components/products/Facilities";
+import Feedback from "@/components/products/Feedback";
+import Precision from "@/components/products/Precision";
+import Subscription from "@/components/products/Subscription";
 
 function ProductsPage() {
     return (

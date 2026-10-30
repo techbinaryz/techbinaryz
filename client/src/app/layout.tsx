@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig, routeMetadata } from "@/config/site";
-import AppLayoutProvider from "@/components/AppLayout/AppLayoutProvider/AppLayoutProvider";
+import AppLayoutProvider from "@/components/appLayout/AppLayoutProvider/AppLayoutProvider";
 import { ToastProvider } from "@/components/ui/sonner";
 
 const geist = Geist({

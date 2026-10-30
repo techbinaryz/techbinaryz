@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import AppHeader from "../AppHeader/AppHeader";
-import AppContent from "../AppContent/AppContent";
-import AppFooter from "../AppFooter/AppFooter";
+import AppContent from "../AppContent";
+import AppFooter from "../AppFooter";
 
 interface AppLayoutProviderProps {
   children: React.ReactNode;

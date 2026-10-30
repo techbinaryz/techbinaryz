@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig, routeMetadata } from "@/config/site";
-import AboutPage from "@/views/about-us/About.page";
+import AboutPage from "@/views/aboutUs/About.page";
 
 export const metadata: Metadata = {
   title: `${routeMetadata.about.title} | ${siteConfig.name}`,

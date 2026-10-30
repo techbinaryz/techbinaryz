@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig, routeMetadata } from "@/config/site";
-import Signin from "@/components/Global/Signin";
+import Signin from "@/components/global/Signin";
 
 export const metadata: Metadata = {
   title: `${routeMetadata.signIn.title} | ${siteConfig.name}`,
