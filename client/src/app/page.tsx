@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-import { siteConfig } from "@/config/site";
 import HomePage from "@/views/home/Home.page";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
+import { homeMeta } from "@/data/home.data";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: siteConfig.url,
-  },
-};
+export const metadata = homeMeta;
 
 export default function page() {
   return (
-    <div>
-      <HomePage />
-    </div>
+    <>
+      <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+      <div>
+        <HomePage />
+      </div>
+    </>
   );
 }

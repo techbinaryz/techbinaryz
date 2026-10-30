@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import { siteConfig, routeMetadata } from "@/config/site";
+import { SITE } from "@/data/site.data";
 import AppLayoutProvider from "@/components/appLayout/AppLayoutProvider/AppLayoutProvider";
 import { ToastProvider } from "@/components/ui/sonner";
 
@@ -11,34 +11,47 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: {
-    default: `${siteConfig.name} | ${routeMetadata.home.title}`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${SITE.name} | ${SITE.tagline}`,
+    template: `%s | ${SITE.name}`,
   },
-  description: siteConfig.description,
+  description: SITE.description,
   keywords: [
     "TechBinaryz",
     "tech solutions",
     "IT services",
+    "software development",
+    "IT consulting",
   ],
-  authors: [{ name: siteConfig.creator, url: siteConfig.url }],
-  creator: siteConfig.creator,
-  metadataBase: new URL(siteConfig.url),
+  authors: [{ name: SITE.creator, url: SITE.url }],
+  creator: SITE.creator,
   openGraph: {
     type: "website",
-    url: siteConfig.url,
-    title: `${siteConfig.name} | ${routeMetadata.home.title}`,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [{ url: siteConfig.ogImage }],
+    siteName: SITE.name,
+    locale: "en_US",
+    images: [{ url: SITE.ogImage, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | ${routeMetadata.home.title}`,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-    creator: `@${siteConfig.creator}`,
+    creator: SITE.social.twitter,
   },
+  applicationName: SITE.name,
+  appleWebApp: {
+    capable: true,
+    title: SITE.shortName,
+    statusBarStyle: "default",
+  },
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 export default function RootLayout({
@@ -47,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" className="light" suppressHydrationWarning>
       <body className={`${geist.className} bg-white antialiased`}>
         <ToastProvider>
           <AppLayoutProvider>{children}</AppLayoutProvider>

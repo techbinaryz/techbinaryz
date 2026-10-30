@@ -1,36 +1,17 @@
-import type { Metadata } from "next";
-import { siteConfig, routeMetadata } from "@/config/site";
 import AboutPage from "@/views/aboutUs/About.page";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { aboutPageJsonLd } from "@/lib/structured-data";
+import { aboutUsMeta } from "@/data/about-us.data";
 
-export const metadata: Metadata = {
-  title: `${routeMetadata.about.title} | ${siteConfig.name}`,
-  description: routeMetadata.about.description,
-  keywords: ["TechBinaryz", "about us", "tech team"],
-  authors: [{ name: siteConfig.creator, url: siteConfig.url }],
-  openGraph: {
-    type: "website",
-    url: `${siteConfig.url}/about-us`,
-    title: `${routeMetadata.about.title} | ${siteConfig.name}`,
-    description: routeMetadata.about.description,
-    siteName: siteConfig.name,
-    images: [{ url: siteConfig.ogImage }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${routeMetadata.about.title} | ${siteConfig.name}`,
-    description: routeMetadata.about.description,
-    images: [siteConfig.ogImage],
-    creator: `@${siteConfig.creator}`,
-  },
-  alternates: {
-    canonical: `${siteConfig.url}/about-us`,
-  },
-};
+export const metadata = aboutUsMeta;
 
 export default function page() {
   return (
-    <div className="bg-black text-white">
-      <AboutPage />
-    </div>
+    <>
+      <JsonLd data={aboutPageJsonLd()} />
+      <div className="bg-black text-white">
+        <AboutPage />
+      </div>
+    </>
   );
 }
