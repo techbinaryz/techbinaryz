@@ -1,16 +1,16 @@
-import Build from "@/components/home/Build";
+import WhatWeBuild from "@/components/home/WhatWeBuild";
 import FAQ from "@/components/home/FAQ";
-import Tool from "@/components/home/Tools";
-import TechnologyWeBuild from "@/components/home/TechnologyWeBuild";
+import ServiceStack from "@/components/home/ServiceStack";
+import BusinessTechnology from "@/components/home/BusinessTechnology";
 import WhyUs from "@/components/home/WhyUs";
 
 
 function HomePage() {
   return (
     <>
-      <TechnologyWeBuild />
-      <Build />
-      <Tool />
+      <BusinessTechnology />
+      <WhatWeBuild />
+      <ServiceStack />
       <WhyUs />
       <FAQ />
     </>

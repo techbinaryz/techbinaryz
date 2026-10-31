@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { servicesData } from "@/data/Home.data";
 import { ArrowRight } from "lucide-react";
 
-export default function Tool() {
+export default function ServiceStack() {
   return (
     <section className="relative w-full bg-primary-foreground py-30 px-6 overflow-hidden">
       <div className="2xl:max-w-7xl mx-auto text-center">

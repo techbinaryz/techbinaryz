@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { coreFeaturesData } from "@/data/Home.data";
 
-export default function Build() {
+export default function WhatWeBuild() {
   return (
     <section className="w-full bg-primary pt-30 pb-5 px-6">
       <div className="2xl:max-w-7xl mx-auto">
