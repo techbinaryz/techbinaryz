@@ -29,7 +29,7 @@ function DrawerLink({
         aria-current={pathname === href ? "page" : undefined}
         className={rowClass}
       >
-        <Icon className="size-[18px] text-muted-foreground" aria-hidden="true" />
+        <Icon className="size-4.5 text-muted-foreground" aria-hidden="true" />
         {label}
         <span className="ml-auto flex items-center gap-2 text-muted-foreground tabular-nums">
           <ChevronRight className="size-4" aria-hidden="true" />
@@ -69,7 +69,7 @@ export function MobileDrawer({
           <button
             onClick={close}
             aria-label={UI_LABELS.closeMenu}
-            className="inline-flex size-11 items-center justify-center rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/[0.06] transition-colors cursor-pointer"
+            className="inline-flex size-11 items-center justify-center rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/6 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>

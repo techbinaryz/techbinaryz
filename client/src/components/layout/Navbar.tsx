@@ -110,6 +110,7 @@ export function Navbar() {
           }}
           animate={hidden ? "hidden" : "visible"}
           transition={{ duration: 0.4, ease: "easeInOut" }}
+          style={{ pointerEvents: hidden ? "none" : "auto" }}
           className={cn(CAPSULE, "lg:hidden flex items-center justify-between gap-2 pl-3 min-[360px]:pl-4 pr-1.5 py-1.5")}
         >
           <Link
@@ -122,7 +123,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
-            className={ICON_BUTTON}
+            className={cn(ICON_BUTTON, "touch-manipulation")}
             aria-label={UI_LABELS.openMenu}
             aria-haspopup="dialog"
             aria-expanded={drawerOpen}
@@ -180,7 +181,7 @@ export function Navbar() {
                         layoutId="nav-indicator"
                         transition={INDICATOR_SPRING}
                         aria-hidden="true"
-                        className="absolute inset-0 rounded-full bg-foreground/[0.08]"
+                        className="absolute inset-0 rounded-full bg-foreground/8"
                       />
                     )}
                     <span className="relative">{link.label}</span>
