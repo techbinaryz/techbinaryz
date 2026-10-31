@@ -5,6 +5,7 @@ import { SITE } from "@/data/metadata/site.data";
 import { ToastProvider } from "@/components/ui/sonner";
 import AppLayoutProvider from "@/components/appLayout/AppLayoutProvider";
 
+
 const geist = Geist({
   subsets: ["latin"],
   display: "swap",
@@ -63,7 +64,9 @@ export default function RootLayout({
     <html lang="en" className="light" suppressHydrationWarning>
       <body className={`${geist.className} bg-white antialiased`}>
         <ToastProvider>
-          <AppLayoutProvider>{children}</AppLayoutProvider>
+          <AppLayoutProvider>
+            {children}
+          </AppLayoutProvider>
         </ToastProvider>
       </body>
     </html>

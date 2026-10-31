@@ -57,3 +57,35 @@ export const navData: navDataTypes[] = [
     link: "/contact-us",
   },
 ];
+
+// Navigation structure compatible with header component
+export interface NavLink {
+  href: string;
+  label: string;
+  /** Shown in the bottom tab bar on phones and tablets. */
+  icon: LucideIcon;
+  /** Path prefixes that mark this link as the current section. Defaults to `href`. */
+  activeFor?: readonly string[];
+  /** Path prefixes that never mark this link as current, even if they match `activeFor`. */
+  notActiveFor?: readonly string[];
+}
+
+export const NAV_LINKS: readonly NavLink[] = [
+  // Matches "/" exactly, so it's only the current tab on the home page.
+  { href: "/", label: "Home", icon: Home },
+  { href: "/products", label: "Products", icon: LayoutGrid },
+  { href: "/about-us", label: "About Us", icon: Users },
+  { href: "/contact-us", label: "Contact Us", icon: Mail },
+];
+
+/** Side drawer on phones and tablets (opened from the top bar's menu button). */
+export const DRAWER = {
+  title: "Menu",
+  description: "Navigation menu",
+  more: [
+    { href: "/", label: "Home", icon: Home },
+    { href: "/products", label: "Products", icon: LayoutGrid },
+    { href: "/about-us", label: "About Us", icon: Users },
+    { href: "/contact-us", label: "Contact Us", icon: Mail },
+  ],
+} as const;
