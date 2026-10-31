@@ -1,4 +1,4 @@
-import { impactData } from "@/data/Content-Change/About-Us.data";
+import { impactData } from "@/data/About-Us.data";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Impact() {

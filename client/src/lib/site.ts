@@ -1,4 +1,4 @@
-import { SITE } from "@/data/site.data";
+import { SITE } from "@/data/metadata/site.data";
 
 /**
  * Convert relative path to absolute URL

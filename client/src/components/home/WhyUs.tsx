@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { keyData } from "@/data/Content-Change/Home.data";
+import { keyData } from "@/data/Home.data";
 
 export default function WhyUs() {
   const [cardLeft, cardRight, cardBottom] = keyData.cards;

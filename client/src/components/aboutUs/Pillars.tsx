@@ -1,7 +1,7 @@
 "use client";
 
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { pillarsData } from "@/data/Content-Change/About-Us.data";
+import { pillarsData } from "@/data/About-Us.data";
 
 export default function Pillars() {
   return (

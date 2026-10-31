@@ -1,4 +1,4 @@
-import { SITE } from "@/data/site.data";
+import { SITE } from "@/data/metadata/site.data";
 import { absoluteUrl } from "@/lib/site";
 
 type JsonLdObject = Record<string, unknown>;

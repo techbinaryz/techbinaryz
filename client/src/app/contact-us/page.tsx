@@ -1,7 +1,7 @@
 import ContactPage from "@/views/contactUs/Contact.page";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { contactPageJsonLd } from "@/lib/structured-data";
-import { contactUsMeta } from "@/data/contact-us.data";
+import { contactUsMeta } from "@/data/metadata/contact-us.data";
 
 export const metadata = contactUsMeta;
 

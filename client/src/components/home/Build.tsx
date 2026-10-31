@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { coreFeaturesData } from "@/data/Content-Change/Home.data";
+import { coreFeaturesData } from "@/data/Home.data";
 
 export default function Build() {
   return (

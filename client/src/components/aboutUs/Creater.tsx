@@ -1,4 +1,4 @@
-import { creatorData } from "@/data/Content-Change/About-Us.data";
+import { creatorData } from "@/data/About-Us.data";
 import {
   Avatar,
   AvatarFallback,

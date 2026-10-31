@@ -1,7 +1,7 @@
 "use client";
 
 import { partners } from "@/data/Partner.data";
-import { transformData } from "@/data/Content-Change/Home.data";
+import { transformData } from "@/data/Home.data";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";

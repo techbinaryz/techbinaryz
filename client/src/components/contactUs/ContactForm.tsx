@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Loader2, PhoneCall, Send } from "lucide-react";
 import Link from "next/link";
-import { contactPageData } from "@/data/Content-Change/Contact-Us.data";
+import { contactPageData } from "@/data/Contact-Us.data";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

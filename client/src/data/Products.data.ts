@@ -41,7 +41,7 @@ export const productsData = {
         {
             id: "sptm",
             name: "SPTM",
-            tagline: "Scheduler Package Time Manager",
+            tagline: "Scheduler Personal Time Manager",
             description:
                 "A scheduling and time management tool built to organise, track, and optimise package delivery timelines and resource allocation.",
             type: "Own Product",

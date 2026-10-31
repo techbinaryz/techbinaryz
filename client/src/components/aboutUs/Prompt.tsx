@@ -1,5 +1,5 @@
 import { partners } from "@/data/Partner.data";
-import { promptData } from "@/data/Content-Change/About-Us.data";
+import { promptData } from "@/data/About-Us.data";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

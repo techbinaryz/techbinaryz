@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { problemData } from "@/data/Content-Change/About-Us.data";
+import { problemData } from "@/data/About-Us.data";
 
 export default function Problem() {
   return (

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { servicesData } from "@/data/Content-Change/Home.data";
+import { servicesData } from "@/data/Home.data";
 import { ArrowRight } from "lucide-react";
 
 export default function Tool() {

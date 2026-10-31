@@ -1,7 +1,7 @@
 import HomePage from "@/views/home/Home.page";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
-import { homeMeta } from "@/data/home.data";
+import { homeMeta } from "@/data/metadata/home.data";
 
 export const metadata = homeMeta;
 

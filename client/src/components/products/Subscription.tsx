@@ -1,4 +1,4 @@
-import { productsData } from "@/data/Content-Change/Products.data";
+import { productsData } from "@/data/Products.data";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

@@ -5,7 +5,7 @@ import {
   FaXTwitter,
   FaLinkedin,
 } from "react-icons/fa6";
-import { footerData } from "@/data/Content-Change/Home.data";
+import { footerData } from "@/data/Home.data";
 import { Button } from "@/components/ui/button";
 
 export default function AppFooter() {

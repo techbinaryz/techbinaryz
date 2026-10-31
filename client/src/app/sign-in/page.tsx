@@ -1,5 +1,5 @@
 import Signin from "@/components/global/Signin";
-import { signInMeta } from "@/data/sign-in.data";
+import { signInMeta } from "@/data/metadata/sign-in.data";
 
 export const metadata = signInMeta;
 

@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqData } from "@/data/Content-Change/Home.data";
+import { faqData } from "@/data/Home.data";
 
 export default function FAQ() {
   return (
