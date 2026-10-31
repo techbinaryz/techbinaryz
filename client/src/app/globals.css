@@ -94,8 +94,18 @@
 
 }
 
+/* Bottom tab bar height: the 56px tab bar (3.5rem), the 12px gap, and the safe area.
+   On desktop (lg+), this becomes 0. */
 :root {
-  overflow-x: hidden;
+  --tabbar-height: calc(5.5rem + max(0.75rem, env(safe-area-inset-bottom)));
+}
+@media (width >= 64rem) {
+  :root {
+    --tabbar-height: 0px;
+  }
+}
+
+:root {
   --Gradient-2: linear-gradient(97deg, #725cff 0%, #b5b1ff 140.21%);
   --border-soft: color-mix(in oklab, var(--color-white) 10%, transparent);
 
@@ -212,6 +222,8 @@
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
+  /* Clears the bottom tab bar on phones and tablets (0 from lg up). Used as pb-tabbar. */
+  --spacing-tabbar: var(--tabbar-height);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
