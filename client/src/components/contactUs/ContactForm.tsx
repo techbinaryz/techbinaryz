@@ -58,7 +58,7 @@ export default function ContactForm() {
     <div className="flex flex-col items-center py-10 justify-center bg-primary px-4 gap-6">
 
       {/* Form card */}
-      <div className="w-full max-w-2xl bg-white backdrop-blur-md border border-white/10 rounded-3xl p-10 shadow-2xl">
+      <div className="w-full max-w-2xl bg-white border rounded-3xl p-10">
         {/* Heading */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-slate-700 flex flex-col sm:flex-row items-center justify-center gap-2">
