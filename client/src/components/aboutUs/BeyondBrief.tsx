@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 
-export default function Prompt() {
+export default function BeyondBrief() {
   return (
     <section className="py-25 flex flex-col w-full items-center justify-center text-center px-6 md:px-20 bg-linear-to-b from-primary via-primary to-tertiary">
       <div className="2xl:max-w-7xl">

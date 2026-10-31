@@ -1,18 +1,18 @@
-import Creater from "@/components/aboutUs/Creater";
-import Impact from "@/components/aboutUs/Impact";
-import Pillars from "@/components/aboutUs/Pillars";
+import Commitment from "@/components/aboutUs/Commitment";
+import Principal from "@/components/aboutUs/Principal";
 import Problem from "@/components/aboutUs/Problem";
-import Prompt from "@/components/aboutUs/Prompt";
+import BeyondBrief from "@/components/aboutUs/BeyondBrief";
+import TheTeam from "@/components/aboutUs/TheTeam";
 
 
 function AboutPage() {
   return (
     <>
-      <Prompt />
+      <BeyondBrief />
       <Problem />
-      <Creater />
-      <Pillars />
-      <Impact />
+      <TheTeam />
+      <Principal />
+      <Commitment />
     </>
   );
 }

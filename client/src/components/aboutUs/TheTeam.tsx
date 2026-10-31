@@ -7,7 +7,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar";
 
-export default function Creator() {
+export default function TheTeam() {
   return (
     <section className="relative w-full bg-primary-foreground pt-20 pb-15 px-6">
       <div className="2xl:max-w-7xl mx-auto text-center">

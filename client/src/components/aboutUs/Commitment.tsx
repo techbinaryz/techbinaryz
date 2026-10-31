@@ -1,7 +1,7 @@
 import { impactData } from "@/data/About-Us.data";
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function Impact() {
+export default function Commitment() {
   return (
     <section className="w-full bg-primary-foreground py-32 px-6">
       <div className="2xl:max-w-7xl mx-auto">

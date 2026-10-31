@@ -3,7 +3,7 @@
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import { pillarsData } from "@/data/About-Us.data";
 
-export default function Pillars() {
+export default function Principal() {
   return (
     <section className="py-20 md:py-28 px-4 sm:px-6 md:px-16 w-full bg-fine-check">
       <div className="2xl:max-w-7xl mx-auto text-center">
