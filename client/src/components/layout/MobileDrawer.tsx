@@ -59,7 +59,7 @@ export function MobileDrawer({
       onClick={close}
     >
       <div
-        className="fixed right-0 top-0 bottom-0 w-[min(22rem,100%)] bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)] flex flex-col"
+        className="fixed right-0 top-0 bottom-0 w-[min(22rem,100%)] bg-white pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)] flex flex-col shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex-row flex items-center justify-between gap-4 px-5 py-3">
