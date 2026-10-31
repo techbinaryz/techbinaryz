@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"build": "tsc"
+	},
 	"dependencies": {
 		"fastify": "^5.12.7"
 	},
