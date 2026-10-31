@@ -194,7 +194,7 @@ export function Navbar() {
             {/* Sign In button */}
             <Link
               ref={signInRef}
-              href="/signin"
+              href="/sign-in"
               className={cn(
                 CAPSULE,
                 "inline-flex h-15.5 items-center gap-2.5 pl-5 pr-6 whitespace-nowrap text-foreground hover:text-foreground/90 transition-colors duration-200",
