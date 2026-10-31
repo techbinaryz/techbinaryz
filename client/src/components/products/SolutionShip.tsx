@@ -19,7 +19,7 @@ const badges = [
   { icon: Settings2, label: "IT Consulting" },
 ];
 
-export default function Precision() {
+export default function SolutionShip() {
   return (
     <main className="bg-primary-foreground">
       <section className="px-6 bg-linear-to-b from-primary-foreground via-accent-white to-tertiary">

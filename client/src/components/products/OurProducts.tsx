@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export default function Subscription() {
+export default function OurProducts() {
   return (
     <section className="bg-pop-brand flex items-center justify-center px-6 py-20">
       <div className="w-full 2xl:max-w-7xl mx-auto">

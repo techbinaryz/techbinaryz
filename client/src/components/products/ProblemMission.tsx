@@ -1,6 +1,6 @@
 import { Android } from "../ui/android";
 
-export default function Facilities() {
+export default function ProblemMission() {
   return (
     <section className="py-20 md:py-32 px-6 md:px-20 border-t w-full bg-linear-to-b from-primary-foreground via-primary to-tertiary ">
       <div className="flex flex-col md:flex-row items-center gap-12 2xl:max-w-7xl mx-auto">

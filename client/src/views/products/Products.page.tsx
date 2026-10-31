@@ -1,15 +1,15 @@
-import Facilities from "@/components/products/Facilities";
+import ProblemMission from "@/components/products/ProblemMission";
 import Feedback from "@/components/products/Feedback";
-import Precision from "@/components/products/Precision";
-import Subscription from "@/components/products/Subscription";
+import SolutionShip from "@/components/products/SolutionShip";
+import OurProducts from "@/components/products/OurProducts";
 
 function ProductsPage() {
     return (
         <>
-            <Precision />
+            <SolutionShip />
             <Feedback />
-            <Facilities />
-            <Subscription />
+            <ProblemMission />
+            <OurProducts />
         </>
     );
 }
