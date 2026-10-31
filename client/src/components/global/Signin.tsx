@@ -52,7 +52,7 @@ export default function SignInForm() {
 
   return (
     <div className="flex items-center py-10 justify-center bg-primary px-4">
-      <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-3xl p-10 shadow-lg">
+      <div className="w-full max-w-2xl bg-white border border-gray-200 rounded-3xl p-10">
 
         {/* Heading */}
         <div className="text-center mb-8">

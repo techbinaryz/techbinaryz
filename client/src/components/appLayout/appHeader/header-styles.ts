@@ -2,7 +2,7 @@
 
 /** Frosted capsule: the site's header surface (for navigation). */
 export const CAPSULE =
-  "bg-background/60 backdrop-blur-2xl rounded-full border border-foreground/[0.08] shadow-[0_8px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.3)]";
+  "bg-white/90 backdrop-blur-2xl rounded-full border border-gray-200/50 shadow-[0_8px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.3)]";
 
 /** Transparent capsule for logo and actions (no background, no border). */
 export const CAPSULE_TRANSPARENT =
