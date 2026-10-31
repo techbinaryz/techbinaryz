@@ -56,7 +56,7 @@ export function AppHeader() {
           <div className="flex justify-start">
             <div
               ref={logoRef}
-              className={cn(CAPSULE_TRANSPARENT, "inline-flex h-[62px] items-center px-5")}
+              className={cn(CAPSULE_TRANSPARENT, "inline-flex h-15.5 items-center px-5")}
             >
               <BrandLink />
             </div>
@@ -74,7 +74,7 @@ export function AppHeader() {
           <div className="flex justify-end">
             <div
               ref={actionsRef}
-              className={cn(CAPSULE_TRANSPARENT, "inline-flex h-[62px] items-center px-3 gap-2")}
+              className={cn(CAPSULE_TRANSPARENT, "inline-flex h-15.5 items-center px-3 gap-2")}
             >
               <SignInButton />
             </div>

@@ -8,7 +8,7 @@ import {
 import { footerData } from "@/data/Home.data";
 import { Button } from "@/components/ui/button";
 
-export default function AppFooter() {
+export default function Footer() {
   return (
     <footer className="relative w-full px-2 overflow-hidden bg-primary-brand">
       {/* Mobile glow */}

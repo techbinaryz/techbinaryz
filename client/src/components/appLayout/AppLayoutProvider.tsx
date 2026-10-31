@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import AppHeader from "./appHeader/AppHeader";
 import AppContent from "./AppContent";
-import AppFooter from "./AppFooter";
+import Footer from "../global/Footer";
 
 
 interface AppLayoutProviderProps {
@@ -13,7 +13,7 @@ export function AppLayoutProvider({ children }: AppLayoutProviderProps) {
     <Fragment>
       <AppHeader />
       <AppContent>{children}</AppContent>
-      <AppFooter />
+      <Footer />
     </Fragment>
   );
 }
