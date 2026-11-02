@@ -5,7 +5,7 @@ export const metadata = signInMeta;
 
 export default function page() {
   return (
-    <div>
+    <div className="min-h-screen">
       <Signin />
     </div>
   );
