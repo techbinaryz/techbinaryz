@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Loader2, LogIn, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { Loader2, LogIn, Eye, EyeOff, ArrowLeft, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -58,11 +58,11 @@ export default function SignInForm() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-2 md:p-4">
-      <div className="flex w-full max-w-[95vw] max-h-[95vh] overflow-hidden rounded-2xl ">
+      <div className="flex w-full max-w-[95vw] max-h-[95vh] overflow-hidden rounded-2xl">
         {/* Left Side - Image */}
         <div className="hidden lg:flex lg:w-1/2 items-center justify-center overflow-hidden relative">
           <Image
-            src="/Sea2.jpg"
+            src="/Crystal.jpg"
             alt="Welcome back"
             width={600}
             height={800}
@@ -70,7 +70,7 @@ export default function SignInForm() {
             priority
           />
           {/* Logo at Top Left */}
-          <div className="absolute top-8 left-8">
+          <div className="absolute top-4 left-4">
             <div className="backdrop-blur-md rounded-xl p-2 flex items-center gap-4">
               <Image
                 src="/TechBinary.png"
@@ -85,10 +85,10 @@ export default function SignInForm() {
           <div className="absolute top-8 right-8">
             <Button
               variant="outline"
-              className="bg-white hover:bg-gray-50 border-black text-black flex items-center gap-2 px-6 py-2"
+              className="bg-transparent flex items-center gap-2 px-6 py-2"
               onClick={() => router.push('/')}
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4" />
               <span className="font-medium">Back</span>
             </Button>
           </div>
@@ -98,10 +98,10 @@ export default function SignInForm() {
           <div className="absolute inset-0 flex items-end justify-start">
             <div className="bg-transparent rounded-xl p-2 m-8">
               <h3 
-                className="text-7xl font-bold mb-3 tracking-widest leading-snug text-transparent" 
+                className="text-7xl font-bold mb-3 tracking-widest leading-snug text-white" 
                 style={{ 
                   // WebkitTextStroke: '2px var(--primary-brand)',
-                  textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
+                  // textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
                 }}
               >
                 Join<br />Tech Binaryz
