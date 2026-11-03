@@ -69,8 +69,8 @@ export default function SignInForm() {
             className="w-full h-full object-cover rounded-2xl"
             priority
           />
-          {/* Logo at Top with Blur */}
-          <div className="absolute top-0 left-0 right-0 flex items-center justify-between m-8">
+          {/* Logo at Top Left */}
+          <div className="absolute top-8 left-8">
             <div className="backdrop-blur-md rounded-xl p-2 flex items-center gap-4">
               <Image
                 src="/TechBinary.png"
@@ -79,14 +79,17 @@ export default function SignInForm() {
                 height={120}
               />
             </div>
-            {/* Back Button at Top Right */}
+          </div>
+          
+          {/* Back Button at Top Right */}
+          <div className="absolute top-8 right-8">
             <Button
               variant="outline"
-              size="icon"
-              className="backdrop-blur-md bg-transparent border-white/30"
+              className="bg-white hover:bg-gray-50 border-black text-black flex items-center gap-2 px-6 py-2"
               onClick={() => router.push('/')}
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-4 h-4" />
+              <span className="font-medium">Back</span>
             </Button>
           </div>
 
@@ -112,11 +115,11 @@ export default function SignInForm() {
           {/* Mobile Back Button */}
           <Button
             variant="outline"
-            size="icon"
-            className="absolute top-4 left-4 lg:hidden z-10"
+            className="absolute top-4 left-4 lg:hidden z-10 bg-white hover:bg-gray-50 border-black text-black flex items-center gap-2 px-3 py-2"
             onClick={() => router.push('/')}
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
+            <span className="font-medium">Back</span>
           </Button>
 
           <ScrollArea className="h-full w-full">
@@ -198,16 +201,16 @@ export default function SignInForm() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-6 bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white font-medium transition"
+                  className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                       Signing in...
                     </>
                   ) : (
                     <>
-                      <LogIn className="w-4 h-4 mr-2" />
+                      <LogIn className="w-4 h-4" />
                       Sign In
                     </>
                   )}

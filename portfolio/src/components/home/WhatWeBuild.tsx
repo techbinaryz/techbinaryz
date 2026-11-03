@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRightIcon } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { coreFeaturesData } from "@/data/Home.data";
 
 export default function WhatWeBuild() {
@@ -35,19 +35,19 @@ export default function WhatWeBuild() {
                   />
                 </div>
 
-                <div className="flex flex-col items-center gap-4 p-6 pt-0">
-                  <Badge variant="outline" className="border-tertiary text-tertiary">
-                    <feature.icon className="w-4 h-4" aria-hidden="true" />
-                    {feature.title}
-                  </Badge>
+                <div className="flex flex-col gap-4 p-6 pt-0">
+                  <div className="bg-secondary-brand rounded-lg w-fit ">
+                    <feature.icon className="w-4 h-4 m-2 text-white" />
+                  </div>
+                  {feature.title}
 
-                  <p className="text-base-foreground text-center text-sm leading-relaxed">
+                  <p className="text-base-foreground text-sm leading-relaxed line-clamp-2">
                     {feature.description}
                   </p>
                   <a href="/products">
-                    <Button className="w-fit bg-tertiary hover:bg-tertiary/90 text-white cursor-pointer">
+                    <Button className="w-full bg-secondary-brand hover:bg-tertiary/90 text-white cursor-pointer">
                       Learn More
-                      <ArrowRightIcon className="w-4 h-4" aria-hidden="true" />
+                      <ChevronRight />
                     </Button>
                   </a>
                 </div>
