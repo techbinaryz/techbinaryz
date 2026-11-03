@@ -1,9 +1,9 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { BadgeAlert, ChevronRight } from "lucide-react";
 import { coreFeaturesData } from "@/data/Home.data";
 
 export default function WhatWeBuild() {
@@ -33,6 +33,10 @@ export default function WhatWeBuild() {
                     height={800}
                     className="h-full w-full object-cover"
                   />
+                  {/* Badge overlay */}
+                  <Badge className="absolute top-4 left-5 backdrop-blur-sm bg-black/40 text-white px-4 py-2 w-fit border-0">
+                    <BadgeAlert />{feature.imageOverlay}
+                  </Badge>
                 </div>
 
                 <div className="flex flex-col gap-4 p-6 pt-0">

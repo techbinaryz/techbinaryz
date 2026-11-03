@@ -2,12 +2,10 @@ import {
   Code2,
   Globe,
   Layers,
-  Rocket,
   Settings2,
   ShieldCheck,
   Smartphone,
   Wrench,
-  Zap,
 } from "lucide-react";
 
 // ─── Transform (Hero) ────────────────────────────────────────────────────────
@@ -31,31 +29,45 @@ export const coreFeaturesData = {
       icon: Globe,
       title: "Web Application Development",
       description: "Full-stack platforms built for your workflows — internal tools to SaaS.",
+      badge: "Web Solutions",
+      imageOverlay: "WebDev"
     },
     {
       icon: Smartphone,
       title: "Mobile App Development",
       description: "Cross-platform apps with seamless experiences on iOS and Android.",
+      badge: "Mobile Apps",
+      imageOverlay: "Software System"
     },
     {
       icon: Code2,
       title: "Custom Software Solutions",
       description: "Software engineered around your exact requirements — no off-the-shelf compromises.",
+      badge: "Custom Software",
+      imageOverlay: "Quote Solutions"
+
     },
     {
       icon: Layers,
       title: "Our Flagship Product",
       description: "A ready-to-deploy platform built to the same standards as every client project.",
+      badge: "Digital Products",
+      imageOverlay: "Digital Products"
+
     },
     {
       icon: ShieldCheck,
       title: "Maintenance & Support",
       description: "Security patches, updates, and performance optimisations to keep systems running.",
+      badge: "Support Services",
+      imageOverlay: "Our Support"
     },
     {
       icon: Settings2,
       title: "IT Consulting",
       description: "Strategic guidance on architecture, tech stack, and digital transformation.",
+      badge: "Consulting",
+      imageOverlay: "Top Tier"
     },
   ],
 };
