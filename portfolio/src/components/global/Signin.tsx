@@ -62,7 +62,7 @@ export default function SignInForm() {
         {/* Left Side - Image */}
         <div className="hidden lg:flex lg:w-1/2 items-center justify-center overflow-hidden relative">
           <Image
-            src="/Crystal.jpg"
+            src="/Signin.jpg"
             alt="Welcome back"
             width={600}
             height={800}
@@ -80,47 +80,20 @@ export default function SignInForm() {
               />
             </div>
           </div>
-          
-          {/* Back Button at Top Right */}
-          <div className="absolute top-8 right-8">
+          <div className="absolute top-4 right-4">
             <Button
-              variant="outline"
-              className="bg-transparent flex items-center gap-2 px-6 py-2"
-              onClick={() => router.push('/')}
+              variant="secondary"
+              onClick={() => router.back()}
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="font-medium">Back</span>
+              Back
             </Button>
-          </div>
-
-
-          {/* Text Box Overlay at Bottom */}
-          <div className="absolute inset-0 flex items-end justify-start">
-            <div className="bg-transparent rounded-xl p-2 m-8">
-              <h3 
-                className="text-7xl font-bold mb-3 tracking-widest leading-snug text-white" 
-                style={{ 
-                  // WebkitTextStroke: '2px var(--primary-brand)',
-                  // textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
-                }}
-              >
-                Join<br />Tech Binaryz
-              </h3>
-            </div>
           </div>
         </div>
 
         {/* Right Side - Form */}
         <div className="flex-1 lg:w-1/2 flex items-center justify-center p-3 md:p-8 lg:p-16 relative">
-          {/* Mobile Back Button */}
-          <Button
-            variant="outline"
-            className="absolute top-4 left-4 lg:hidden z-10 bg-white hover:bg-gray-50 border-black text-black flex items-center gap-2 px-3 py-2"
-            onClick={() => router.push('/')}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="font-medium">Back</span>
-          </Button>
+
 
           <ScrollArea className="h-full w-full">
             <div className="w-full max-w-lg mx-auto pt-8 md:pt-16">
