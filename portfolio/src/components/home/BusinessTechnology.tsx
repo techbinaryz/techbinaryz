@@ -2,9 +2,9 @@
 
 import { partners } from "@/data/Partner.data";
 import { transformData } from "@/data/Home.data";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { Play } from "lucide-react";
 import { FaBusinessTime } from "react-icons/fa6";
 
@@ -59,17 +59,17 @@ export default function BusinessTechnology() {
               {transformData.trustedLabel}
             </p>
 
-            <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto items-center">
+            <div className="flex flex-wrap justify-center max-w-7xl mx-auto items-center">
               {partners.map((l) =>
                 l.src ? (
-                  <span className="relative w-24 h-10" key={l.alt}>
-                    <Image
+                  <Avatar key={l.alt}>
+                    <AvatarImage
                       src={l.src}
                       alt={l.alt}
-                      fill
-                      className="opacity-70 hover:opacity-100 duration-300 object-contain"
+                      className="object-contain"
                     />
-                  </span>
+                    <AvatarFallback>{l.alt}</AvatarFallback>
+                  </Avatar>
                 ) : (
                   <span
                     key={l.alt}

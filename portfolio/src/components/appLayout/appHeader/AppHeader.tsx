@@ -20,6 +20,7 @@ const INDICATOR_SPRING = {
 
 export function AppHeader() {
   const pathname = usePathname();
+  const isSignInPage = pathname === "/sign-in";
 
   return (
     <>
@@ -60,7 +61,17 @@ export function AppHeader() {
           </nav>
 
           {/* Sign In */}
-          <div className="flex items-center gap-2 md:gap-4">
+          {!isSignInPage && (
+            <div className="flex items-center gap-2 md:gap-4 lg:hidden">
+              <Link
+                href="/sign-in"
+                className="px-5 py-2.5 text-xs md:text-sm bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white rounded-full font-medium transition-all shadow-sm"
+              >
+                Sign In
+              </Link>
+            </div>
+          )}
+          <div className="hidden lg:flex items-center gap-2 md:gap-4">
             <Link
               href="/sign-in"
               className="px-5 py-2.5 text-xs md:text-sm bg-tertiary hover:bg-[#c0fdfb] hover:text-primary-brand text-white rounded-full font-medium transition-all shadow-sm"
