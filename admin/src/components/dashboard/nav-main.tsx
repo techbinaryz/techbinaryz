@@ -28,7 +28,7 @@ export function NavMain({
             >
               <CirclePlusIcon
               />
-              <span>Quick Create</span>
+              <span>Create Tool</span>
             </SidebarMenuButton>
             <Button
               size="icon"
