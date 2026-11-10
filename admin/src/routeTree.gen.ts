@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as TimelinesRouteImport } from './routes/timelines'
+import { Route as WrittooRouteImport } from './routes/writtoo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelinesRoute = TimelinesRouteImport.update({
+  id: '/timelines',
+  path: '/timelines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WrittooRoute = WrittooRouteImport.update({
+  id: '/writtoo',
+  path: '/writtoo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/projects': typeof ProjectsRoute
+  '/timelines': typeof TimelinesRoute
+  '/writtoo': typeof WrittooRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/projects': typeof ProjectsRoute
+  '/timelines': typeof TimelinesRoute
+  '/writtoo': typeof WrittooRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/projects': typeof ProjectsRoute
+  '/timelines': typeof TimelinesRoute
+  '/writtoo': typeof WrittooRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/analytics' | '/projects' | '/timelines' | '/writtoo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/analytics' | '/projects' | '/timelines' | '/writtoo'
+  id: '__root__' | '/' | '/analytics' | '/projects' | '/timelines' | '/writtoo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  ProjectsRoute: typeof ProjectsRoute
+  TimelinesRoute: typeof TimelinesRoute
+  WrittooRoute: typeof WrittooRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timelines': {
+      id: '/timelines'
+      path: '/timelines'
+      fullPath: '/timelines'
+      preLoaderRoute: typeof TimelinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/writtoo': {
+      id: '/writtoo'
+      path: '/writtoo'
+      fullPath: '/writtoo'
+      preLoaderRoute: typeof WrittooRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  ProjectsRoute: ProjectsRoute,
+  TimelinesRoute: TimelinesRoute,
+  WrittooRoute: WrittooRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
