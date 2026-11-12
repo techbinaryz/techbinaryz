@@ -85,10 +85,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5! h-fit"
               render={<a href="/" />}
             >
-              {/* < className="size-5!" /> */}
               <img src="/Tech_small.png" className="size-10" />
               <div className="flex flex-col gap-0 leading-tight">
-                <h1 className="text-lg font-semibold">TechBinaryz</h1>
+                <h1 className="text-lg font-semibold leading-tight">TechBinaryz</h1>
                 <p className="text-sm font-normal text-muted-foreground">Admin Panel</p>
               </div>
             </SidebarMenuButton>

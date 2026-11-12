@@ -1,3 +1,4 @@
+import Timelines from '@/components/timelines/Timelines'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/timelines')({
@@ -5,5 +6,5 @@ export const Route = createFileRoute('/timelines')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/timelines"!</div>
+  return <Timelines />
 }
