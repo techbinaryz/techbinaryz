@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BellIcon, Book, ChevronRight, Edit, EllipsisVertical, Trash } from 'lucide-react'
+import { BellIcon, Book, ChevronRight, Edit, EllipsisVertical, Pin, PinIcon, PinOff, PinOffIcon, Trash } from 'lucide-react'
 import { Badge } from "../reui/badge"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { useState } from "react"
 
 const projectsData = [
     {
@@ -63,66 +64,103 @@ const projectsData = [
 ]
 
 export function CurrentProjects() {
+    const [pinnedProjects, setPinnedProjects] = useState<number[]>([])
+
+    const togglePin = (id: number) => {
+        if (pinnedProjects.includes(id)) {
+            setPinnedProjects(pinnedProjects.filter(p => p !== id))
+        } else {
+            setPinnedProjects([...pinnedProjects, id])
+        }
+    }
+
     return (
         <div className="grid grid-cols-3 my-2 gap-4">
             {
-                projectsData.map((i) => (
-                    <Card key={i.id} className="w-full max-w-xs overflow-hidden pt-0">
-                        <div className="relative h-48 w-full overflow-hidden">
-                            <img
-                                src={i.image}
-                                alt="16:9"
-                                width={1000}
-                                height={800}
-                                className="h-full w-full object-cover"
-                            />
-                            <Badge variant="outline" className="absolute top-3 left-4">
-                                <BellIcon aria-hidden="true" />
-                                {i.status}
-                            </Badge>
+                projectsData.map((i) => {
+                    const isPinned = pinnedProjects.includes(i.id)
 
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="absolute top-3 right-4">
-                                    <Button variant="secondary" size="icon">
-                                        <EllipsisVertical className="h-4 w-4" />
-                                    </Button>
-                                </DropdownMenuTrigger>
-
-                                <DropdownMenuContent className="w-40" align="end">
-                                    <DropdownMenuGroup>
-                                        <DropdownMenuLabel>Manage</DropdownMenuLabel>
-                                        <DropdownMenuItem><Edit /> Edit</DropdownMenuItem>
-                                        <DropdownMenuItem><Book /> Read More</DropdownMenuItem>
-                                    </DropdownMenuGroup>
-
-                                    <DropdownMenuGroup>
-                                        <DropdownMenuItem variant="destructive"><Trash /> Delete</DropdownMenuItem>
-                                    </DropdownMenuGroup>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-
-                        </div>
-
-                        <CardContent className="flex flex-col gap-4 pt-4">
-                            <div className="flex items-center justify-between gap-5">
-                                <div className="flex items-center gap-1">
-                                    <Badge variant="secondary">
-                                        {i.client}
+                    return (
+                        <Card key={i.id} className="w-full max-w-xs overflow-hidden pt-0">
+                            <div className="relative h-48 w-full overflow-hidden">
+                                <img
+                                    src={i.image}
+                                    alt="16:9"
+                                    width={1000}
+                                    height={800}
+                                    className="h-full w-full object-cover"
+                                />
+                                {isPinned ? (
+                                    <>
+                                        <Badge variant="outline" className="absolute top-3 left-4">
+                                            <PinOffIcon />
+                                        </Badge>
+                                        <Badge variant="outline" className="absolute top-3 left-10">
+                                            <BellIcon aria-hidden="true" />
+                                            {i.status}
+                                        </Badge>
+                                    </>
+                                ) : (
+                                    <Badge variant="outline" className="absolute top-3 left-4">
+                                        <BellIcon aria-hidden="true" />
+                                        {i.status}
                                     </Badge>
-                                </div>
+                                )}
+
+
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger className="absolute top-3 right-4">
+                                        <Button variant="secondary" size="icon">
+                                            <EllipsisVertical className="h-4 w-4" />
+                                        </Button>
+                                    </DropdownMenuTrigger>
+
+                                    <DropdownMenuContent className="w-40" align="end">
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuLabel>Manage</DropdownMenuLabel>
+                                            {isPinned ? (
+                                                <DropdownMenuItem onClick={() => togglePin(i.id)}>
+                                                    <PinOff /> Unpin
+                                                </DropdownMenuItem>
+                                            ) : (
+                                                <DropdownMenuItem onClick={() => togglePin(i.id)}>
+                                                    <Pin /> Pin
+                                                </DropdownMenuItem>
+                                            )}
+                                            <DropdownMenuItem><Edit /> Edit</DropdownMenuItem>
+                                            <DropdownMenuItem><Book /> Read More</DropdownMenuItem>
+                                        </DropdownMenuGroup>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuItem variant="destructive"><Trash /> Delete</DropdownMenuItem>
+                                        </DropdownMenuGroup>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+
                             </div>
 
-                            <p className="text-foreground text-sm line-clamp-3">
-                                {i.description}
-                            </p>
+                            <CardContent className="flex flex-col gap-4 pt-4">
+                                <div className="flex items-center justify-between gap-5">
+                                    <div className="flex items-center gap-1">
+                                        <Badge variant="secondary">
+                                            {i.client}
+                                        </Badge>
+                                    </div>
+                                </div>
 
-                            <Button>
-                                Get Started
-                                <ChevronRight aria-hidden="true" />
-                            </Button>
-                        </CardContent>
-                    </Card>
-                ))
+                                <p className="text-foreground text-sm line-clamp-3">
+                                    {i.description}
+                                </p>
+
+                                <Button>
+                                    Get Started
+                                    <ChevronRight aria-hidden="true" />
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    )
+                }
+                )
             }
         </div>
 
