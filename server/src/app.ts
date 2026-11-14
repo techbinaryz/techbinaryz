@@ -6,6 +6,7 @@ import rateLimit from "@fastify/rate-limit";
 import { connectDatabase } from "./config/database";
 import authenticatePlugin from "./plugins/authenticate";
 import authRoutes from "./modules/auth/auth.handler";
+import portfolioRoutes from "./modules/portfolio";
 
 export async function buildApp() {
   const fastify = Fastify({
@@ -45,6 +46,7 @@ export async function buildApp() {
 
   // Register routes
   await fastify.register(authRoutes);
+  await fastify.register(portfolioRoutes);
 
   // Health check route
   fastify.get("/health", async () => {
