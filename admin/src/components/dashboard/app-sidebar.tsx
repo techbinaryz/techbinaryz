@@ -53,14 +53,6 @@ const data = {
         />
       ),
     },
-    {
-      title: "Team",
-      url: "/hrms",
-      icon: (
-        <UsersIcon
-        />
-      ),
-    },
   ],
 
   others: [
