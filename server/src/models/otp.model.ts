@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 import crypto from "crypto";
 
-export type OtpPurpose = "login" | "register" | "reset";
+export type OtpPurpose = "login" | "register" | "reset" | "admin_login";
 export const MAX_OTP_ATTEMPTS = 5;
 
 export interface IOtp extends Document {
@@ -26,7 +26,7 @@ const otpSchema = new Schema<IOtp>(
     attempts: { type: Number, default: 0 },
     purpose: {
       type: String,
-      enum: ["login", "register", "reset"],
+      enum: ["login", "register", "reset", "admin_login"],
       default: "login",
     },
   },
@@ -73,4 +73,24 @@ export async function verifyAndConsumeOtp(
     attempts >= MAX_OTP_ATTEMPTS ? { $set: { attempts, is_used: true } } : { $set: { attempts } }
   );
   return { ok: false };
+}
+
+/**
+ * Simple verify OTP (non-atomic, for admin login)
+ */
+export async function verifyOtp(
+  email: string,
+  submitted: string,
+  purpose: OtpPurpose
+): Promise<boolean> {
+  const record = await Otp.findOne({
+    email,
+    purpose,
+    is_used: false,
+    expires_at: { $gt: new Date() },
+  });
+
+  if (!record) return false;
+
+  return record.otp === hashOtp(submitted);
 }

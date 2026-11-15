@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE } from "@/data/metadata/site.data";
 import { ToastProvider } from "@/components/ui/sonner";
 import AppLayoutProvider from "@/components/appLayout/AppLayoutProvider";
+import { QueryProvider } from "@/components/providers/QueryProvider";
 
 
 const geist = Geist({
@@ -63,11 +64,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <body className={`${geist.className} bg-white antialiased`}>
-        <ToastProvider>
-          <AppLayoutProvider>
-            {children}
-          </AppLayoutProvider>
-        </ToastProvider>
+        <QueryProvider>
+          <ToastProvider>
+            <AppLayoutProvider>
+              {children}
+            </AppLayoutProvider>
+          </ToastProvider>
+        </QueryProvider>
       </body>
     </html>
   );

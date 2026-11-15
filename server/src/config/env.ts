@@ -15,6 +15,7 @@ export const env = {
   EMAIL_USER: process.env.EMAIL_USER || "",
   EMAIL_PASSWORD: process.env.EMAIL_PASSWORD || "",
   EMAIL_FROM: process.env.EMAIL_FROM || "noreply@techbinaryz.com",
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL || "",
 } as const;
 
 export default env;

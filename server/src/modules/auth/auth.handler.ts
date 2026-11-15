@@ -5,6 +5,8 @@ import { login } from "./login";
 import { loginVerify } from "./login-verify";
 import { refresh } from "./refresh";
 import { logout } from "./logout";
+import { adminSendOtp } from "./admin-send-otp";
+import { adminLogin } from "./admin-login";
 
 export default async function authRoutes(fastify: FastifyInstance) {
   // Send OTP for registration
@@ -18,6 +20,10 @@ export default async function authRoutes(fastify: FastifyInstance) {
 
   // Login verify (step 2 - OTP)
   fastify.post("/auth/login/verify", loginVerify);
+
+  // Admin-specific login routes (for configured ADMIN_EMAIL only)
+  fastify.post("/auth/admin/send-otp", adminSendOtp);
+  fastify.post("/auth/admin/login", adminLogin);
 
   // Refresh access token
   fastify.post("/auth/refresh", refresh);
