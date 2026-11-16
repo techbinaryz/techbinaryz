@@ -1,10 +1,10 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import bcrypt from "bcrypt";
-import { User } from "../../models/user.model";
-import { verifyAndConsumeOtp } from "../../models/otp.model";
 import { sendWelcomeEmail } from "../../utils/email.service";
 import { signAccess, issueRefreshToken, SALT_ROUNDS } from "./auth.internal";
 import { Types } from "mongoose";
+import { User } from "../../models/auth/user.model";
+import { verifyAndConsumeOtp } from "../../models/auth/otp.model";
 
 export const register = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { full_name, email, password, otp } = request.body as {

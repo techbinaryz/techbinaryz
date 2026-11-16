@@ -1,13 +1,13 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import { User } from "../../models/user.model";
-import { Otp, hashOtp } from "../../models/otp.model";
-import { BlockedIp } from "../../models/blocked-ip.model";
-import { FailedLoginAttempt } from "../../models/failed-login-attempt.model";
 import { sendOtpEmail } from "../../utils/email.service";
 import { getClientIp } from "./auth.internal";
 import { constant } from "../../config/constant";
+import { BlockedIp } from "../../models/auth/blocked-ip.model";
+import { hashOtp, Otp } from "../../models/auth/otp.model";
+import { FailedLoginAttempt } from "../../models/auth/failed-login-attempt.model";
+import { User } from "../../models/auth/user.model";
 
 export const login = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { email, password } = request.body as { email?: string; password?: string };

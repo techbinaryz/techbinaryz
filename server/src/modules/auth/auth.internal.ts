@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { Types } from "mongoose";
 import { constant } from "../../config/constant";
-import { RefreshToken } from "../../models/refresh-token.model";
+import { RefreshToken } from "../../models/auth/refresh-token.model";
 
 export { getClientIp, parseUserAgent } from "../../utils/http-helpers";
 

@@ -1,10 +1,10 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
-import { User } from "../../models/user.model";
-import { Otp, hashOtp } from "../../models/otp.model";
 import { sendOtpEmail } from "../../utils/email.service";
 import { constant } from "../../config/constant";
+import { User } from "../../models/auth/user.model";
+import { hashOtp, Otp } from "../../models/auth/otp.model";
 
 /**
  * Admin Send OTP - Special route for admin login

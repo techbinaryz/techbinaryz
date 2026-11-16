@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { RefreshToken } from "../../models/refresh-token.model";
+import { RefreshToken } from "../../models/auth/refresh-token.model";
 
 export const logout = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { refresh_token } = request.body as { refresh_token?: string };

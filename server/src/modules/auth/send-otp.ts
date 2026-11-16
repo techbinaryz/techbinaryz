@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import crypto from "crypto";
-import { Otp, hashOtp } from "../../models/otp.model";
 import { sendOtpEmail } from "../../utils/email.service";
 import { constant } from "../../config/constant";
+import { hashOtp, Otp } from "../../models/auth/otp.model";
 
 export const sendOtp = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { email } = request.body as { email?: string };
