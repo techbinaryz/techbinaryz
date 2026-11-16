@@ -14,8 +14,12 @@ const faqSchema = new Schema<IFaq>(
         asked_by: { type: Schema.Types.ObjectId, ref: "User", required: true },
     },
     {
-        timestamps: { createdAt: "asked_on" },
+        timestamps: { createdAt: "asked_on", updatedAt: false },
     }
 );
+
+// Index for faster queries by user
+faqSchema.index({ asked_by: 1 });
+faqSchema.index({ asked_on: -1 }); // Sort by most recent
 
 export const Faq = mongoose.model<IFaq>("Faq", faqSchema);
