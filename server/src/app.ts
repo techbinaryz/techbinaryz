@@ -4,7 +4,7 @@ import helmet from "@fastify/helmet";
 import sensible from "@fastify/sensible";
 import rateLimit from "@fastify/rate-limit";
 import { connectDatabase } from "./config/database";
-import authenticatePlugin from "./plugins/authenticate";
+import authenticatePlugin from "./middleware/authenticate";
 import authRoutes from "./modules/auth/auth.handler";
 import feedbackRoutes from "./routes/feedback-routes";
 import faqRoutes from "./routes/faq-routes";
