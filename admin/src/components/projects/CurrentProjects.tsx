@@ -218,7 +218,7 @@ export function CurrentProjects() {
 
             {/* Edit Project Dialog */}
             <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto flex flex-col justify-center">
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto top-1/2 -translate-y-1/2">
                     <DialogHeader>
                         <DialogTitle>Edit Project</DialogTitle>
                         <DialogDescription>
