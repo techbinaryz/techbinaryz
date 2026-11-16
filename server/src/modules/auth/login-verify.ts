@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { Types } from "mongoose";
 import { signAccess, issueRefreshToken } from "./auth.internal";
 import { verifyAndConsumeOtp } from "../../models/auth/otp.model";
-import { User } from "../../models/auth/user.model";
+import { User } from "../../models/user/user.model";
 
 export const loginVerify = async (
   request: FastifyRequest,

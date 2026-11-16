@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { sendWelcomeEmail } from "../../utils/email.service";
 import { signAccess, issueRefreshToken, SALT_ROUNDS } from "./auth.internal";
 import { Types } from "mongoose";
-import { User } from "../../models/auth/user.model";
+import { User } from "../../models/user/user.model";
 import { verifyAndConsumeOtp } from "../../models/auth/otp.model";
 
 export const register = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {

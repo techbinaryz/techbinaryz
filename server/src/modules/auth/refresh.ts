@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { Types } from "mongoose";
 import { signAccess, issueRefreshToken } from "./auth.internal";
 import { RefreshToken } from "../../models/auth/refresh-token.model";
-import { User } from "../../models/auth/user.model";
+import { User } from "../../models/user/user.model";
 
 export const refresh = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { refresh_token } = request.body as { refresh_token?: string };

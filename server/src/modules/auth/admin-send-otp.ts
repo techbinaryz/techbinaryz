@@ -3,7 +3,7 @@ import crypto from "crypto";
 import bcrypt from "bcrypt";
 import { sendOtpEmail } from "../../utils/email.service";
 import { constant } from "../../config/constant";
-import { User } from "../../models/auth/user.model";
+import { User } from "../../models/user/user.model";
 import { hashOtp, Otp } from "../../models/auth/otp.model";
 
 /**

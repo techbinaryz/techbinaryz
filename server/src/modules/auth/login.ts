@@ -7,7 +7,7 @@ import { constant } from "../../config/constant";
 import { BlockedIp } from "../../models/auth/blocked-ip.model";
 import { hashOtp, Otp } from "../../models/auth/otp.model";
 import { FailedLoginAttempt } from "../../models/auth/failed-login-attempt.model";
-import { User } from "../../models/auth/user.model";
+import { User } from "../../models/user/user.model";
 
 export const login = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { email, password } = request.body as { email?: string; password?: string };

@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { signAccess, issueRefreshToken } from "./auth.internal";
 import { constant } from "../../config/constant";
 import { Otp, verifyOtp } from "../../models/auth/otp.model";
-import { User } from "../../models/auth/user.model";
+import { User } from "../../models/user/user.model";
 
 /**
  * Admin Login - Verify OTP and issue tokens
