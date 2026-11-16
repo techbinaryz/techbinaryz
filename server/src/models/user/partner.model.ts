@@ -1,15 +1,8 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IPartner } from "../../interfaces/user.interfaces";
 
-export interface IPartner extends Document {
-  name: string;
-  logo: string;
-  website?: string;
-  description?: string;
-  is_active: boolean;
-  display_order: number;
-  created_at: Date;
-  updated_at: Date;
-}
+// Re-export types for backward compatibility
+export { IPartner };
 
 const partnerSchema = new Schema<IPartner>(
   {

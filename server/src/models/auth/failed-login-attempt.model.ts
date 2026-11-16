@@ -1,10 +1,8 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IFailedLoginAttempt } from "../../interfaces/auth.interfaces";
 
-export interface IFailedLoginAttempt extends Document {
-  ip: string;
-  email: string;
-  created_at: Date;
-}
+// Re-export types for backward compatibility
+export { IFailedLoginAttempt };
 
 const failedLoginAttemptSchema = new Schema<IFailedLoginAttempt>(
   {

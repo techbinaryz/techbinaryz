@@ -1,18 +1,11 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import crypto from "crypto";
+import { IOtp, OtpPurpose } from "../../interfaces/auth.interfaces";
 
-export type OtpPurpose = "login" | "register" | "reset" | "admin_login";
+// Re-export types for backward compatibility
+export { IOtp, OtpPurpose };
+
 export const MAX_OTP_ATTEMPTS = 5;
-
-export interface IOtp extends Document {
-  email: string;
-  otp: string; // Stored as SHA-256 hash
-  expires_at: Date;
-  is_used: boolean;
-  attempts: number;
-  purpose: OtpPurpose;
-  created_at: Date;
-}
 
 export const hashOtp = (otp: string): string =>
   crypto.createHash("sha256").update(String(otp)).digest("hex");

@@ -1,36 +1,8 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IService, ServiceCategory, PricingType } from "../../interfaces/service.interfaces";
 
-export type ServiceCategory =
-  | "web_development"
-  | "mobile_development"
-  | "cloud_services"
-  | "consulting"
-  | "design"
-  | "custom_software"
-  | "maintainance"
-  | "other";
-
-export type PricingType = "fixed" | "hourly" | "monthly" | "custom" | "contact";
-
-export interface IService extends Document {
-  name: string;
-  description: string;
-  short_description?: string;
-  category: ServiceCategory;
-  icon?: string; // Icon or image for the service
-  features: string[]; // Array of key features
-  pricing_type: PricingType;
-  starting_price?: number; // Optional starting price
-  currency?: string; // e.g., "USD", "INR"
-  is_active: boolean;
-  is_featured: boolean;
-  display_order: number;
-  deliverables?: string[]; // What client receives
-  duration_estimate?: string; // e.g., "2-4 weeks"
-  created_by: Types.ObjectId;
-  created_at: Date;
-  updated_at: Date;
-}
+// Re-export types for backward compatibility
+export { IService, ServiceCategory, PricingType };
 
 const serviceSchema = new Schema<IService>(
   {

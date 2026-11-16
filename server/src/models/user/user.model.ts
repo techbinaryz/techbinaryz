@@ -1,19 +1,8 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IUser, AccountStatus } from "../../interfaces/user.interfaces";
 
-export type AccountStatus = "active" | "deactivated" | "deleted" | "suspicious";
-
-export interface IUser extends Document {
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  designation?: string;
-  role: "admin" | "user"; 
-  account_status: AccountStatus;
-  is_email_verified: boolean;
-  created_at: Date;
-  updated_at: Date;
-}
+// Re-export types for backward compatibility
+export { IUser, AccountStatus };
 
 const userSchema = new Schema<IUser>(
   {

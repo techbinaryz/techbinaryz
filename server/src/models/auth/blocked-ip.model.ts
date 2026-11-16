@@ -1,11 +1,8 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IBlockedIp } from "../../interfaces/auth.interfaces";
 
-export interface IBlockedIp extends Document {
-  ip: string;
-  email: string;
-  blocked_until: Date;
-  created_at: Date;
-}
+// Re-export types for backward compatibility
+export { IBlockedIp };
 
 const blockedIpSchema = new Schema<IBlockedIp>(
   {

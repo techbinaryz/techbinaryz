@@ -1,30 +1,8 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IProject, ProjectStatus, ProjectCategory } from "../../interfaces/service.interfaces";
 
-export type ProjectStatus = "planning" | "in_progress" | "completed" | "on_hold" | "cancelled";
-export type ProjectCategory = "web" | "mobile" | "desktop" | "ai_ml" | "blockchain" | "other";
-
-export interface IProject extends Document {
-  title: string;
-  description: string;
-  short_description?: string;
-  category: ProjectCategory;
-  status: ProjectStatus;
-  technologies: string[]; // Array of tech stack used
-  image?: string; // Main project image
-  gallery?: string[]; // Additional project images
-  github_url?: string;
-  live_url?: string;
-  start_date?: Date;
-  end_date?: Date;
-  client_name?: string;
-  team_size?: number;
-  is_featured: boolean;
-  is_published: boolean;
-  display_order: number;
-  created_by: Types.ObjectId;
-  created_at: Date;
-  updated_at: Date;
-}
+// Re-export types for backward compatibility
+export { IProject, ProjectStatus, ProjectCategory };
 
 const projectSchema = new Schema<IProject>(
   {

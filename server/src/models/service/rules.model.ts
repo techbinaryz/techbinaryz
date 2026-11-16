@@ -1,20 +1,8 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IRule, RuleCategory } from "../../interfaces/service.interfaces";
 
-export type RuleCategory = "general" | "privacy" | "security" | "content" | "user_conduct" | "other";
-
-export interface IRule extends Document {
-  title: string;
-  description: string;
-  category: RuleCategory;
-  rule_number?: string; // e.g., "1.1", "2.3.4"
-  is_active: boolean;
-  is_mandatory: boolean; // Whether acceptance is mandatory
-  display_order: number;
-  effective_date?: Date; // When this rule becomes effective
-  last_modified_by: Types.ObjectId;
-  created_at: Date;
-  updated_at: Date;
-}
+// Re-export types for backward compatibility
+export { IRule, RuleCategory };
 
 const ruleSchema = new Schema<IRule>(
   {

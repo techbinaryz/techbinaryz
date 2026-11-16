@@ -1,11 +1,8 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IFaq } from "../../interfaces/user.interfaces";
 
-export interface IFaq extends Document {
-    question: string;
-    answer: string;
-    asked_by: Types.ObjectId;
-    asked_on: Date;
-}
+// Re-export types for backward compatibility
+export { IFaq };
 
 const faqSchema = new Schema<IFaq>(
     {

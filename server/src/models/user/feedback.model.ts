@@ -1,11 +1,8 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IFeedback } from "../../interfaces/user.interfaces";
 
-export interface IFeedback extends Document {
-    feedback: string;
-    posted_by: Types.ObjectId;
-    designation?: string;
-    posted_at: Date;
-}
+// Re-export types for backward compatibility
+export { IFeedback };
 
 const feedbackSchema = new Schema<IFeedback>(
     {
