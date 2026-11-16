@@ -7,7 +7,7 @@ import { BlockedIp } from "../../models/blocked-ip.model";
 import { FailedLoginAttempt } from "../../models/failed-login-attempt.model";
 import { sendOtpEmail } from "../../utils/email.service";
 import { getClientIp } from "./auth.internal";
-import { env } from "../../config/env";
+import { constant } from "../../config/constant";
 
 export const login = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { email, password } = request.body as { email?: string; password?: string };
@@ -60,7 +60,7 @@ export const login = async (request: FastifyRequest, reply: FastifyReply): Promi
   const otpRecord = await Otp.create({
     email,
     otp: hashOtp(otp),
-    expires_at: new Date(Date.now() + env.OTP_EXPIRY_MINUTES * 60 * 1000),
+    expires_at: new Date(Date.now() + constant.OTP_EXPIRY_MINUTES * 60 * 1000),
     purpose: "login",
   });
 

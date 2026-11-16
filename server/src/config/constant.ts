@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-export const env = {
+export const constant = {
   PORT: process.env.PORT || "8000",
   NODE_ENV: process.env.NODE_ENV || "development",
   MONGODB_URI: process.env.MONGODB_URI || "mongodb://localhost:27017/techbinaryz",
@@ -18,4 +18,4 @@ export const env = {
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || "",
 } as const;
 
-export default env;
+export default constant;

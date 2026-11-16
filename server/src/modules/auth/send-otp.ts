@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import crypto from "crypto";
 import { Otp, hashOtp } from "../../models/otp.model";
 import { sendOtpEmail } from "../../utils/email.service";
-import { env } from "../../config/env";
+import { constant } from "../../config/constant";
 
 export const sendOtp = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
   const { email } = request.body as { email?: string };
@@ -22,7 +22,7 @@ export const sendOtp = async (request: FastifyRequest, reply: FastifyReply): Pro
   const otpRecord = await Otp.create({
     email,
     otp: hashOtp(otp),
-    expires_at: new Date(Date.now() + env.OTP_EXPIRY_MINUTES * 60 * 1000),
+    expires_at: new Date(Date.now() + constant.OTP_EXPIRY_MINUTES * 60 * 1000),
     purpose: "register",
   });
 

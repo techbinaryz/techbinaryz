@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { User } from "../../models/user.model";
 import { Otp, verifyOtp } from "../../models/otp.model";
 import { signAccess, issueRefreshToken } from "./auth.internal";
-import { env } from "../../config/env";
+import { constant } from "../../config/constant";
 
 /**
  * Admin Login - Verify OTP and issue tokens
@@ -20,7 +20,7 @@ export const adminLogin = async (
   }
 
   // Check if this email is the configured admin email
-  if (email.toLowerCase() !== env.ADMIN_EMAIL.toLowerCase()) {
+  if (email.toLowerCase() !== constant.ADMIN_EMAIL.toLowerCase()) {
     reply.status(403).send({
       success: false,
       error: "This email is not authorized as admin.",

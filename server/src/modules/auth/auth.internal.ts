@@ -1,12 +1,12 @@
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { Types } from "mongoose";
-import { env } from "../../config/env";
+import { constant } from "../../config/constant";
 import { RefreshToken } from "../../models/refresh-token.model";
 
 export { getClientIp, parseUserAgent } from "../../utils/http-helpers";
 
-export const SALT_ROUNDS = env.SALT_ROUNDS;
+export const SALT_ROUNDS = constant.SALT_ROUNDS;
 
 /**
  * Sign access token
@@ -14,8 +14,8 @@ export const SALT_ROUNDS = env.SALT_ROUNDS;
 export const signAccess = (userId: Types.ObjectId): string => {
   return jwt.sign(
     { id: userId, role: "admin" },
-    env.JWT_SECRET,
-    { expiresIn: env.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions
+    constant.JWT_SECRET,
+    { expiresIn: constant.ACCESS_TOKEN_EXPIRY } as jwt.SignOptions
   );
 };
 
@@ -27,7 +27,7 @@ export const issueRefreshToken = async (
   familyId?: string
 ): Promise<string> => {
   const token = crypto.randomBytes(64).toString("hex");
-  const expiresMs = env.REFRESH_TOKEN_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+  const expiresMs = constant.REFRESH_TOKEN_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
 
   await RefreshToken.create({
     token,
@@ -44,7 +44,7 @@ export const issueRefreshToken = async (
  */
 export const verifyAccessToken = (token: string): { id: string; role: string } | null => {
   try {
-    const decoded = jwt.verify(token, env.JWT_SECRET) as { id: string; role: string };
+    const decoded = jwt.verify(token, constant.JWT_SECRET) as { id: string; role: string };
     return decoded;
   } catch {
     return null;

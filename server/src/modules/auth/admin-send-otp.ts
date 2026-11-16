@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import { User } from "../../models/user.model";
 import { Otp, hashOtp } from "../../models/otp.model";
 import { sendOtpEmail } from "../../utils/email.service";
-import { env } from "../../config/env";
+import { constant } from "../../config/constant";
 
 /**
  * Admin Send OTP - Special route for admin login
@@ -22,7 +22,7 @@ export const adminSendOtp = async (
   }
 
   // Check if this email is the configured admin email
-  if (email.toLowerCase() !== env.ADMIN_EMAIL.toLowerCase()) {
+  if (email.toLowerCase() !== constant.ADMIN_EMAIL.toLowerCase()) {
     reply.status(403).send({
       success: false,
       error: "This email is not authorized as admin.",
@@ -65,7 +65,7 @@ export const adminSendOtp = async (
   const otpRecord = await Otp.create({
     email: email.toLowerCase(),
     otp: hashOtp(otp),
-    expires_at: new Date(Date.now() + env.OTP_EXPIRY_MINUTES * 60 * 1000),
+    expires_at: new Date(Date.now() + constant.OTP_EXPIRY_MINUTES * 60 * 1000),
     purpose: "admin_login",
   });
 
