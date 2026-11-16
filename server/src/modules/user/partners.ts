@@ -1,8 +1,8 @@
 // The partners of TechBinaryz
 
 import { FastifyRequest, FastifyReply } from "fastify";
-import { Partner } from "../models/partner.model";
 import { Types } from "mongoose";
+import { Partner } from "../../models/user/partner.model";
 
 // GET all partners
 export const getAllPartners = async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
