@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify";
-import { sendOtp } from "./send-otp";
-import { register } from "./register";
-import { login } from "./login";
-import { loginVerify } from "./login-verify";
-import { refresh } from "./refresh";
-import { logout } from "./logout";
-import { adminSendOtp } from "./admin-send-otp";
-import { adminLogin } from "./admin-login";
+import { sendOtp } from "../modules/auth/send-otp";
+import { register } from "../modules/auth/register";
+import { login } from "../modules/auth/login";
+import { loginVerify } from "../modules/auth/login-verify";
+import { refresh } from "../modules/auth/refresh";
+import { logout } from "../modules/auth/logout";
+import { adminSendOtp } from "../modules/auth/admin-send-otp";
+import { adminLogin } from "../modules/auth/admin-login";
 
 export default async function authRoutes(fastify: FastifyInstance) {
   // Send OTP for registration

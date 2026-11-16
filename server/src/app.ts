@@ -5,7 +5,7 @@ import sensible from "@fastify/sensible";
 import rateLimit from "@fastify/rate-limit";
 import { connectDatabase } from "./config/database";
 import authenticatePlugin from "./middleware/authenticate";
-import authRoutes from "./modules/auth/auth.handler";
+import authRoutes from "./routes/auth-routes";
 import feedbackRoutes from "./routes/feedback-routes";
 import faqRoutes from "./routes/faq-routes";
 import partnerRoutes from "./routes/partner-routes";
