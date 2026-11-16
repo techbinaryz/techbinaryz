@@ -1,7 +1,8 @@
 import fp from "fastify-plugin";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { verifyAccessToken } from "../modules/auth/auth.internal";
-import { IUser, User } from "../models/user/user.model";
+import { IUser } from "../interfaces/user.interfaces";
+import { User } from "../models/user/user.model";
 
 declare module "fastify" {
   interface FastifyInstance {
