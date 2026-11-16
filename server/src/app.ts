@@ -5,13 +5,13 @@ import sensible from "@fastify/sensible";
 import rateLimit from "@fastify/rate-limit";
 import { connectDatabase } from "./config/database";
 import authenticatePlugin from "./middleware/authenticate";
-import authRoutes from "./routes/auth-routes";
-import feedbackRoutes from "./routes/feedback-routes";
-import faqRoutes from "./routes/faq-routes";
-import partnerRoutes from "./routes/partner-routes";
-import rulesRoutes from "./routes/rules-routes";
-import projectsRoutes from "./routes/projects-routes";
-import servicesRoutes from "./routes/services-routes";
+import authRoutes from "./routes/auth.routes";
+import feedbackRoutes from "./routes/feedback.routes";
+import faqRoutes from "./routes/faq.routes";
+import partnerRoutes from "./routes/partner.routes";
+import rulesRoutes from "./routes/rules.routes";
+import projectsRoutes from "./routes/projects.routes";
+import servicesRoutes from "./routes/services.routes";
 
 export async function buildApp() {
   const fastify = Fastify({
