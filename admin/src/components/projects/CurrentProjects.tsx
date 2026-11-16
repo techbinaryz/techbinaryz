@@ -1,9 +1,16 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BellIcon, Book, ChevronRight, Edit, EllipsisVertical, Pin, PinIcon, PinOff, PinOffIcon, Trash } from 'lucide-react'
+import { BellIcon, Book, ChevronRight, Edit, EllipsisVertical, Pin, PinOff, Trash } from 'lucide-react'
 import { Badge } from "../reui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../ui/dialog"
+import { Input } from "../ui/input"
+import { Textarea } from "../ui/textarea"
+import { Field, FieldLabel, FieldError } from "../ui/field"
 import { useState } from "react"
+import { useForm, type SubmitHandler } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
 
 const projectsData = [
     {
@@ -63,8 +70,32 @@ const projectsData = [
     }
 ]
 
+// Zod validation schema
+const projectSchema = z.object({
+    name: z.string().min(2, "Project name must be at least 2 characters"),
+    client: z.string().min(2, "Client name must be at least 2 characters"),
+    status: z.string().min(1, "Status is required"),
+    specialty: z.string().min(1, "Specialty is required"),
+    description: z.string().min(10, "Description must be at least 10 characters"),
+    startDate: z.string().min(1, "Start date is required"),
+    progress: z.number().min(0).max(100, "Progress must be between 0 and 100"),
+})
+
+type ProjectFormData = z.infer<typeof projectSchema>
+
 export function CurrentProjects() {
     const [pinnedProjects, setPinnedProjects] = useState<number[]>([])
+    const [editDialogOpen, setEditDialogOpen] = useState(false)
+    const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null)
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm<ProjectFormData>({
+        resolver: zodResolver(projectSchema),
+    })
 
     const togglePin = (id: number) => {
         if (pinnedProjects.includes(id)) {
@@ -72,6 +103,26 @@ export function CurrentProjects() {
         } else {
             setPinnedProjects([...pinnedProjects, id])
         }
+    }
+
+    const handleEditClick = (project: typeof projectsData[0]) => {
+        setSelectedProject(project)
+        reset({
+            name: project.name,
+            client: project.client,
+            status: project.status,
+            specialty: project.specialty,
+            description: project.description,
+            startDate: project.startDate,
+            progress: project.progress,
+        })
+        setEditDialogOpen(true)
+    }
+
+    const onSubmit: SubmitHandler<ProjectFormData> = (data) => {
+        console.log("Updated project data:", { ...selectedProject, ...data })
+        // Here you would typically make an API call to update the project
+        setEditDialogOpen(false)
     }
 
     return (
@@ -93,7 +144,7 @@ export function CurrentProjects() {
                                 {isPinned ? (
                                     <>
                                         <Badge variant="outline" className="absolute top-3 left-4">
-                                            <PinOffIcon />
+                                            <PinOff />
                                         </Badge>
                                         <Badge variant="outline" className="absolute top-3 left-10">
                                             <BellIcon aria-hidden="true" />
@@ -127,7 +178,9 @@ export function CurrentProjects() {
                                                     <Pin /> Pin
                                                 </DropdownMenuItem>
                                             )}
-                                            <DropdownMenuItem><Edit /> Edit</DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => handleEditClick(i)}>
+                                                <Edit /> Edit
+                                            </DropdownMenuItem>
                                             <DropdownMenuItem><Book /> Read More</DropdownMenuItem>
                                         </DropdownMenuGroup>
                                         <DropdownMenuSeparator />
@@ -162,6 +215,120 @@ export function CurrentProjects() {
                 }
                 )
             }
+
+            {/* Edit Project Dialog */}
+            <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto flex flex-col justify-center">
+                    <DialogHeader>
+                        <DialogTitle>Edit Project</DialogTitle>
+                        <DialogDescription>
+                            Update the project details below
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* Project Name */}
+                            <Field>
+                                <FieldLabel htmlFor="name">Project Name</FieldLabel>
+                                <Input
+                                    id="name"
+                                    placeholder="Enter project name"
+                                    {...register("name")}
+                                />
+                                <FieldError errors={errors.name ? [errors.name] : undefined} />
+                            </Field>
+
+                            {/* Client */}
+                            <Field>
+                                <FieldLabel htmlFor="client">Client</FieldLabel>
+                                <Input
+                                    id="client"
+                                    placeholder="Enter client name"
+                                    {...register("client")}
+                                />
+                                <FieldError errors={errors.client ? [errors.client] : undefined} />
+                            </Field>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* Status */}
+                            <Field>
+                                <FieldLabel htmlFor="status">Status</FieldLabel>
+                                <Input
+                                    id="status"
+                                    placeholder="e.g., Trending, In Progress"
+                                    {...register("status")}
+                                />
+                                <FieldError errors={errors.status ? [errors.status] : undefined} />
+                            </Field>
+
+                            {/* Specialty */}
+                            <Field>
+                                <FieldLabel htmlFor="specialty">Specialty</FieldLabel>
+                                <Input
+                                    id="specialty"
+                                    placeholder="e.g., Featured, High Priority"
+                                    {...register("specialty")}
+                                />
+                                <FieldError errors={errors.specialty ? [errors.specialty] : undefined} />
+                            </Field>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* Start Date */}
+                            <Field>
+                                <FieldLabel htmlFor="startDate">Start Date</FieldLabel>
+                                <Input
+                                    id="startDate"
+                                    type="date"
+                                    {...register("startDate")}
+                                />
+                                <FieldError errors={errors.startDate ? [errors.startDate] : undefined} />
+                            </Field>
+
+                            {/* Progress */}
+                            <Field>
+                                <FieldLabel htmlFor="progress">Progress (%)</FieldLabel>
+                                <Input
+                                    id="progress"
+                                    type="number"
+                                    min="0"
+                                    max="100"
+                                    placeholder="0-100"
+                                    {...register("progress")}
+                                />
+                                <FieldError errors={errors.progress ? [errors.progress] : undefined} />
+                            </Field>
+                        </div>
+
+                        {/* Description */}
+                        <Field>
+                            <FieldLabel htmlFor="description">Description</FieldLabel>
+                            <Textarea
+                                id="description"
+                                placeholder="Enter project description"
+                                rows={4}
+                                {...register("description")}
+                            />
+                            <FieldError errors={errors.description ? [errors.description] : undefined} />
+                        </Field>
+
+                        <div className="flex justify-end gap-3 pt-4">
+                            <Button
+                                type="button"
+                                variant="outline"
+                                onClick={() => setEditDialogOpen(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button type="submit">
+                                Save Changes
+                            </Button>
+                        </div>
+                    </form>
+                </DialogContent>
+            </Dialog>
         </div>
 
     )

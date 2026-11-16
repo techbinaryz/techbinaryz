@@ -235,11 +235,11 @@ export default function LoginForm() {
                       )}
                     </Button>
 
-                    {/* Sign Up Link */}
+                    {/* Sign In Link */}
                     <div className="text-center text-sm text-slate-600">
-                      Don't have an account?{" "}
-                      <Link href="/sign-up" className="text-teal-600 hover:text-teal-700 font-medium underline">
-                        Sign Up
+                      Already have an account?{" "}
+                      <Link href="/sign-in" className="text-teal-600 hover:text-teal-700 font-medium underline">
+                        Sign In
                       </Link>
                     </div>
                   </form>

@@ -1,69 +1,93 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader2, LogIn, Eye, EyeOff, ChevronLeft, Mail } from "lucide-react";
+import { Loader2, UserPlus, Eye, EyeOff, ChevronLeft, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/components/ui/sonner";
-import { useLogin, useLoginVerify } from "@/hooks/use-auth";
+import { useSendOtp, useRegister } from "@/hooks/use-auth";
 import { getErrorMessage } from "@/lib/auth-api";
 
-const loginSchema = z.object({
+const registerSchema = z.object({
+  full_name: z.string().min(2, "Full name must be at least 2 characters"),
   email: z
     .string()
     .min(1, "Email is required")
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Enter a valid email"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  gender: z.enum(["Male", "Female", "Other"], {
+    message: "Please select a gender",
+  }),
+  occupation: z.enum(["Student", "Teacher", "Engineer", "Doctor", "Lawyer", "Artist", "Other"], {
+    message: "Please select an occupation",
+  }),
   password: z.string().min(6, "Password must be at least 6 characters"),
+  confirmPassword: z.string().min(6, "Please confirm your password"),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
 });
 
-type LoginData = z.infer<typeof loginSchema>;
+type RegisterData = z.infer<typeof registerSchema>;
 
 export default function SigninForm() {
   const [step, setStep] = useState<"credentials" | "otp">("credentials");
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState<RegisterData | null>(null);
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
   const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  const loginMutation = useLogin();
-  const verifyMutation = useLoginVerify();
+  const sendOtpMutation = useSendOtp();
+  const registerMutation = useRegister();
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<LoginData>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<RegisterData>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
+      full_name: "",
       email: "",
+      phone: "",
+      gender: undefined,
+      occupation: undefined,
       password: "",
+      confirmPassword: "",
     },
   });
 
-  const onSubmitCredentials = async (data: LoginData) => {
-    loginMutation.mutate(
-      {
-        email: data.email,
-        password: data.password,
-      },
+  const onSubmitCredentials = async (data: RegisterData) => {
+    setFormData(data);
+    
+    sendOtpMutation.mutate(
+      { email: data.email },
       {
         onSuccess: () => {
-          setEmail(data.email);
           setStep("otp");
           toast("OTP sent to your email! Please check your inbox.", "success");
         },
         onError: (error) => {
-          toast(`Login failed: ${getErrorMessage(error)}`, "error");
+          toast(`Failed to send OTP: ${getErrorMessage(error)}`, "error");
         },
       }
     );
@@ -109,17 +133,28 @@ export default function SigninForm() {
       return;
     }
 
-    verifyMutation.mutate(
+    if (!formData) {
+      toast("Registration data missing. Please start over.", "error");
+      setStep("credentials");
+      return;
+    }
+
+    registerMutation.mutate(
       {
-        email,
+        full_name: formData.full_name,
+        email: formData.email,
+        phone: formData.phone,
+        gender: formData.gender,
+        occupation: formData.occupation,
+        password: formData.password,
         otp: otpCode,
       },
       {
         onSuccess: () => {
-          toast("Signed in successfully! Redirecting...", "success");
+          toast("Account created successfully! Redirecting...", "success");
         },
         onError: (error) => {
-          toast(`Verification failed: ${getErrorMessage(error)}`, "error");
+          toast(`Registration failed: ${getErrorMessage(error)}`, "error");
           setOtp(["", "", "", "", "", ""]);
           otpInputRefs.current[0]?.focus();
         },
@@ -170,15 +205,29 @@ export default function SigninForm() {
               {step === "credentials" ? (
                 <>
                   <div className="mb-4 px-4 md:px-12">
-                    <h2 className="text-3xl font-bold text-slate-800 mb-2">Welcome Back</h2>
-                    <p className="text-slate-600 text-sm">Enter your credentials to sign in</p>
+                    <h2 className="text-3xl font-bold text-slate-800 mb-2">Create Account</h2>
+                    <p className="text-slate-600 text-sm">Fill in your details to sign in</p>
                   </div>
 
                   <form
                     onSubmit={handleSubmit(onSubmitCredentials)}
-                    className="space-y-5 px-4 md:px-12 py-6 md:py-10 rounded-2xl"
+                    className="space-y-4 px-4 md:px-12 py-6 md:py-10 rounded-2xl"
                     noValidate
                   >
+                    {/* Full Name */}
+                    <div className="flex flex-col gap-1.5">
+                      <Label className="text-slate-700 text-sm font-medium">Full Name</Label>
+                      <Input
+                        type="text"
+                        placeholder="John Doe"
+                        className={errors.full_name ? "border-red-400" : ""}
+                        {...register("full_name")}
+                      />
+                      {errors.full_name && (
+                        <p className="text-red-500 text-xs pl-1">{errors.full_name.message}</p>
+                      )}
+                    </div>
+
                     {/* Email */}
                     <div className="flex flex-col gap-1.5">
                       <Label className="text-slate-700 text-sm font-medium">Email</Label>
@@ -191,6 +240,75 @@ export default function SigninForm() {
                       {errors.email && (
                         <p className="text-red-500 text-xs pl-1">{errors.email.message}</p>
                       )}
+                    </div>
+
+                    {/* Phone */}
+                    <div className="flex flex-col gap-1.5">
+                      <Label className="text-slate-700 text-sm font-medium">Phone</Label>
+                      <Input
+                        type="tel"
+                        placeholder="+1234567890"
+                        className={errors.phone ? "border-red-400" : ""}
+                        {...register("phone")}
+                      />
+                      {errors.phone && (
+                        <p className="text-red-500 text-xs pl-1">{errors.phone.message}</p>
+                      )}
+                    </div>
+
+                    {/* Gender and Occupation Row */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Gender */}
+                      <div className="flex flex-col gap-1.5">
+                        <Label className="text-slate-700 text-sm font-medium">Gender</Label>
+                        <Controller
+                          name="gender"
+                          control={control}
+                          render={({ field }) => (
+                            <Select onValueChange={field.onChange} value={field.value}>
+                              <SelectTrigger className={`w-full ${errors.gender ? "border-red-400" : ""}`}>
+                                <SelectValue placeholder="Select" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Male">Male</SelectItem>
+                                <SelectItem value="Female">Female</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          )}
+                        />
+                        {errors.gender && (
+                          <p className="text-red-500 text-xs pl-1">{errors.gender.message}</p>
+                        )}
+                      </div>
+
+                      {/* Occupation */}
+                      <div className="flex flex-col gap-1.5">
+                        <Label className="text-slate-700 text-sm font-medium">Occupation</Label>
+                        <Controller
+                          name="occupation"
+                          control={control}
+                          render={({ field }) => (
+                            <Select onValueChange={field.onChange} value={field.value}>
+                              <SelectTrigger className={`w-full ${errors.occupation ? "border-red-400" : ""}`}>
+                                <SelectValue placeholder="Select" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Student">Student</SelectItem>
+                                <SelectItem value="Teacher">Teacher</SelectItem>
+                                <SelectItem value="Engineer">Engineer</SelectItem>
+                                <SelectItem value="Doctor">Doctor</SelectItem>
+                                <SelectItem value="Lawyer">Lawyer</SelectItem>
+                                <SelectItem value="Artist">Artist</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          )}
+                        />
+                        {errors.occupation && (
+                          <p className="text-red-500 text-xs pl-1">{errors.occupation.message}</p>
+                        )}
+                      </div>
                     </div>
 
                     {/* Password */}
@@ -216,30 +334,53 @@ export default function SigninForm() {
                       )}
                     </div>
 
+                    {/* Confirm Password */}
+                    <div className="flex flex-col gap-1.5">
+                      <Label className="text-slate-700 text-sm font-medium">Confirm Password</Label>
+                      <div className="relative">
+                        <Input
+                          type={showConfirmPassword ? "text" : "password"}
+                          placeholder="Confirm your password"
+                          className={errors.confirmPassword ? "border-red-400 pr-10" : "pr-10"}
+                          {...register("confirmPassword")}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700 transition"
+                        >
+                          {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        </button>
+                      </div>
+                      {errors.confirmPassword && (
+                        <p className="text-red-500 text-xs pl-1">{errors.confirmPassword.message}</p>
+                      )}
+                    </div>
+
                     {/* Submit */}
                     <Button
                       type="submit"
-                      disabled={loginMutation.isPending}
+                      disabled={sendOtpMutation.isPending}
                       className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2"
                     >
-                      {loginMutation.isPending ? (
+                      {sendOtpMutation.isPending ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin" />
-                          Verifying...
+                          Sending OTP...
                         </>
                       ) : (
                         <>
-                          <LogIn className="w-4 h-4" />
+                          <UserPlus className="w-4 h-4" />
                           Continue
                         </>
                       )}
                     </Button>
 
-                    {/* Sign Up Link */}
+                    {/* Login Link */}
                     <div className="text-center text-sm text-slate-600">
-                      Don't have an account?{" "}
-                      <Link href="/sign-up" className="text-teal-600 hover:text-teal-700 font-medium underline">
-                        Sign Up
+                      Already have an account?{" "}
+                      <Link href="/login" className="text-teal-600 hover:text-teal-700 font-medium underline">
+                        Login
                       </Link>
                     </div>
                   </form>
@@ -260,7 +401,7 @@ export default function SigninForm() {
                       <Mail className="w-4 h-4" />
                       Check your email for the 6-digit code
                     </p>
-                    <p className="text-slate-500 text-xs mt-1">{email}</p>
+                    <p className="text-slate-500 text-xs mt-1">{formData?.email}</p>
                   </div>
 
                   <div className="space-y-6 px-4 md:px-12 py-6 md:py-10">
@@ -291,18 +432,18 @@ export default function SigninForm() {
                     {/* Verify Button */}
                     <Button
                       onClick={handleVerifyOtp}
-                      disabled={verifyMutation.isPending || otp.some((d) => !d)}
+                      disabled={registerMutation.isPending || otp.some((d) => !d)}
                       className="w-full py-3 rounded-full bg-teal-400 hover:bg-teal-500 text-white font-medium transition cursor-pointer flex items-center justify-center gap-2"
                     >
-                      {verifyMutation.isPending ? (
+                      {registerMutation.isPending ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin" />
-                          Verifying...
+                          Creating Account...
                         </>
                       ) : (
                         <>
-                          <LogIn className="w-4 h-4" />
-                          Verify & Sign In
+                          <UserPlus className="w-4 h-4" />
+                          Create Account
                         </>
                       )}
                     </Button>
@@ -310,8 +451,8 @@ export default function SigninForm() {
                     {/* Resend OTP */}
                     <div className="text-center">
                       <button
-                        onClick={() => handleSubmit(onSubmitCredentials)()}
-                        disabled={loginMutation.isPending}
+                        onClick={() => formData && sendOtpMutation.mutate({ email: formData.email })}
+                        disabled={sendOtpMutation.isPending}
                         className="text-sm text-teal-600 hover:text-teal-700 underline"
                       >
                         Resend OTP

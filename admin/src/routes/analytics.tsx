@@ -13,6 +13,8 @@ export const Route = createFileRoute('/analytics')({
 
 function RouteComponent() {
   return (
-   <Analytics />
+    <>
+      <Analytics />
+    </>
   )
 }
