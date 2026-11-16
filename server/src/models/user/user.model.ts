@@ -7,7 +7,8 @@ export interface IUser extends Document {
   last_name: string;
   email: string;
   password: string;
-  role: "admin"; // Only admin role exists
+  designation?: string;
+  role: "admin" | "user"; 
   account_status: AccountStatus;
   is_email_verified: boolean;
   created_at: Date;
@@ -20,7 +21,8 @@ const userSchema = new Schema<IUser>(
     last_name: { type: String, default: "", trim: true },
     email: { type: String, required: true, unique: true, lowercase: true, trim: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["admin"], default: "admin" },
+    designation: { type: String, trim: true },
+    role: { type: String, enum: ["admin", "user"], default: "user" },
     account_status: {
       type: String,
       enum: ["active", "deactivated", "deleted", "suspicious"],
