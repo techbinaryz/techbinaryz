@@ -6,6 +6,12 @@ import rateLimit from "@fastify/rate-limit";
 import { connectDatabase } from "./config/database";
 import authenticatePlugin from "./plugins/authenticate";
 import authRoutes from "./modules/auth/auth.handler";
+import feedbackRoutes from "./routes/feedback-routes";
+import faqRoutes from "./routes/faq-routes";
+import partnerRoutes from "./routes/partner-routes";
+import rulesRoutes from "./routes/rules-routes";
+import projectsRoutes from "./routes/projects-routes";
+import servicesRoutes from "./routes/services-routes";
 
 export async function buildApp() {
   const fastify = Fastify({
@@ -45,6 +51,12 @@ export async function buildApp() {
 
   // Register routes
   await fastify.register(authRoutes);
+  await fastify.register(feedbackRoutes);
+  await fastify.register(faqRoutes);
+  await fastify.register(partnerRoutes);
+  await fastify.register(rulesRoutes);
+  await fastify.register(projectsRoutes);
+  await fastify.register(servicesRoutes);
 
   // Health check route
   fastify.get("/health", async () => {
