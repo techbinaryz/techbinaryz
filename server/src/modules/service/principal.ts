@@ -1,1 +1,0 @@
-// Core Rules and principals
