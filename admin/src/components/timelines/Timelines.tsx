@@ -1,5 +1,5 @@
 import { DataTable } from "@/components/dashboard/data-table"
-import data from "@/app/dashboard/data.json"
+import data from "@/data/data.json"
 
 export default function Timelines() {
     return (
